@@ -32,7 +32,7 @@ const App = () => {
                 </div>
                 
                 <h1 className="hero-title">
-                  Your Name Here
+                  Yasith Prashan
                 </h1>
                 
                 <h2 className="hero-subtitle">
