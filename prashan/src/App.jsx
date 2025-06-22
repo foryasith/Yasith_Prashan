@@ -1,310 +1,254 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 const App = () => {
-  const [currentSection, setCurrentSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
-  const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ];
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const renderContent = () => {
-    switch(currentSection) {
-      case 'home':
-        return (
-          <div className="hero-section">
-            <div className="hero-background"></div>
-            <div className="hero-content">
-              <div className="hero-container">
-                <div className="profile-image-container">
-                  <img 
-                    src="./src/assets/profile.jpg"
-                    alt="Profile"
-                    className="profile-image"
-                  />
-                </div>
-                
-                <h1 className="hero-title">
-                  Yasith Prashan
-                </h1>
-                
-                <h2 className="hero-subtitle">
-                  Web Developer & Designer
-                </h2>
-                
-                <p className="hero-description">
-                  Welcome to my digital space! I'm passionate about creating beautiful, 
-                  functional websites and applications. Let's build something amazing together.
-                </p>
-                
-                <div className="hero-buttons">
-                  <button 
-                    onClick={() => setCurrentSection('about')}
-                    className="btn btn-primary"
-                  >
-                    Learn More
-                  </button>
-                  <button 
-                    onClick={() => setCurrentSection('contact')}
-                    className="btn btn-secondary"
-                  >
-                    Get In Touch
-                  </button>
-                </div>
-                
-                <div className="social-links">
-                  <a href="https://linkedin.com/in/yourprofile" className="social-link">
-                    <div className="social-icon">Li</div>
-                  </a>
-                  <a href="https://github.com/yourprofile" className="social-link">
-                    <div className="social-icon">Gh</div>
-                  </a>
-                  <a href="https://twitter.com/yourprofile" className="social-link">
-                    <div className="social-icon">Tw</div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'about':
-        return (
-          <div className="about-section">
-            <div className="container">
-              <h2 className="section-title">About Me</h2>
-              <div className="about-content">
-                <div className="about-image-container">
-                  <img 
-                    src="./src/assets/about-image.jpg"
-                    alt="About"
-                    className="about-image"
-                  />
-                </div>
-                <div className="about-text">
-                  <h3 className="about-heading">My Story</h3>
-                  <p className="about-paragraph">
-                    I'm a passionate developer with a love for creating digital experiences 
-                    that make a difference. With expertise in modern web technologies, 
-                    I enjoy turning complex problems into simple, beautiful solutions.
-                  </p>
-                  <p className="about-paragraph">
-                    When I'm not coding, you can find me exploring new technologies, 
-                    contributing to open-source projects, or enjoying a good cup of coffee 
-                    while planning my next adventure.
-                  </p>
-                  <div className="skills-tags">
-                    {['React', 'JavaScript', 'Node.js', 'Python', 'CSS', 'MongoDB'].map(skill => (
-                      <span key={skill} className="skill-tag">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'skills':
-        return (
-          <div className="skills-section">
-            <div className="container">
-              <h2 className="section-title">Skills & Expertise</h2>
-              <div className="skills-grid">
-                {[
-                  { title: 'Frontend', skills: ['React', 'Vue.js', 'HTML5', 'CSS3', 'JavaScript'], color: 'blue' },
-                  { title: 'Backend', skills: ['Node.js', 'Python', 'Express', 'MongoDB', 'PostgreSQL'], color: 'green' },
-                  { title: 'Tools', skills: ['Git', 'Docker', 'AWS', 'Figma', 'VS Code'], color: 'purple' }
-                ].map((category, index) => (
-                  <div key={index} className={`skill-category ${category.color}`}>
-                    <h3 className="skill-category-title">{category.title}</h3>
-                    <ul className="skill-list">
-                      {category.skills.map((skill, skillIndex) => (
-                        <li key={skillIndex} className="skill-item">
-                          <div className="skill-dot"></div>
-                          <span>{skill}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'projects':
-        return (
-          <div className="projects-section">
-            <div className="container">
-              <h2 className="section-title">Featured Projects</h2>
-              <div className="projects-grid">
-                {[1, 2, 3, 4, 5, 6].map((project) => (
-                  <div key={project} className="project-card">
-                    <div className="project-image">
-                      <img 
-                        src={`./src/assets/project-${project}.jpg`}
-                        alt={`Project ${project}`}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `<div class="project-placeholder">Project ${project}</div>`;
-                        }}
-                      />
-                    </div>
-                    <div className="project-content">
-                      <h3 className="project-title">Project {project}</h3>
-                      <p className="project-description">
-                        A brief description of this amazing project and what it accomplishes.
-                      </p>
-                      <div className="project-footer">
-                        <div className="project-tags">
-                          <span className="project-tag blue">React</span>
-                          <span className="project-tag green">Node.js</span>
-                        </div>
-                        <button className="project-link">View →</button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'contact':
-        return (
-          <div className="contact-section">
-            <div className="container">
-              <h2 className="section-title">Get In Touch</h2>
-              <div className="contact-content">
-                <div className="contact-info">
-                  <h3 className="contact-heading">Let's Work Together</h3>
-                  <p className="contact-description">
-                    I'm always interested in new opportunities and exciting projects. 
-                    Whether you have a question or just want to say hi, I'd love to hear from you!
-                  </p>
-                  <div className="contact-details">
-                    <div className="contact-item">
-                      <div className="contact-icon email">@</div>
-                      <span>your.email@example.com</span>
-                    </div>
-                    <div className="contact-item">
-                      <div className="contact-icon phone">📱</div>
-                      <span>+1 (555) 123-4567</span>
-                    </div>
-                    <div className="contact-item">
-                      <div className="contact-icon location">📍</div>
-                      <span>Your City, Country</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="contact-form">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" placeholder="Your Name" />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="your.email@example.com" />
-                  </div>
-                  <div className="form-group">
-                    <label>Message</label>
-                    <textarea rows="4" placeholder="Your message here..."></textarea>
-                  </div>
-                  <button 
-                    onClick={() => alert('Message sent! (This is a demo)')}
-                    className="btn btn-primary full-width"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      
-      default:
-        return null;
-    }
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    setActiveSection(sectionId);
+    setIsMenuOpen(false);
   };
 
+  const skills = [
+    { name: 'JavaScript', level: 90 },
+    { name: 'React', level: 85 },
+    { name: 'Node.js', level: 80 },
+    { name: 'Python', level: 75 },
+    { name: 'CSS/SCSS', level: 88 },
+    { name: 'MongoDB', level: 70 }
+  ];
+
+  const projects = [
+    {
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB',
+      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      image: 'https://via.placeholder.com/400x250/667eea/ffffff?text=E-Commerce+Platform'
+    },
+    {
+      title: 'Task Management App',
+      description: 'Collaborative task management tool with real-time updates',
+      tech: ['React', 'Firebase', 'Material-UI'],
+      image: 'https://via.placeholder.com/400x250/764ba2/ffffff?text=Task+Manager'
+    },
+    {
+      title: 'Weather Dashboard',
+      description: 'Interactive weather dashboard with data visualization',
+      tech: ['React', 'Chart.js', 'OpenWeather API'],
+      image: 'https://via.placeholder.com/400x250/f093fb/ffffff?text=Weather+Dashboard'
+    }
+  ];
+
   return (
-    <div className="app">
+    <div className="App">
       {/* Navigation */}
-      <nav className="navbar">
+      <nav className={`navbar ${scrollY > 50 ? 'scrolled' : ''}`}>
         <div className="nav-container">
-          <div className="nav-content">
-            <div className="nav-logo">Portfolio</div>
-            <div className="nav-links">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setCurrentSection(section.id)}
-                  className={`nav-link ${currentSection === section.id ? 'active' : ''}`}
-                >
-                  {section.label}
-                </button>
-              ))}
-            </div>
-            <div className="nav-mobile">
-              <button className="mobile-menu-btn">
-                <div className="hamburger">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </button>
-            </div>
+          <div className="nav-logo">
+            <span>Your Name</span>
+          </div>
+          <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+            <a href="#home" onClick={() => scrollToSection('home')} className={activeSection === 'home' ? 'active' : ''}>
+              Home
+            </a>
+            <a href="#about" onClick={() => scrollToSection('about')} className={activeSection === 'about' ? 'active' : ''}>
+              About
+            </a>
+            <a href="#skills" onClick={() => scrollToSection('skills')} className={activeSection === 'skills' ? 'active' : ''}>
+              Skills
+            </a>
+            <a href="#projects" onClick={() => scrollToSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>
+              Projects
+            </a>
+            <a href="#contact" onClick={() => scrollToSection('contact')} className={activeSection === 'contact' ? 'active' : ''}>
+              Contact
+            </a>
+          </div>
+          <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="main-content">
-        {renderContent()}
-      </main>
+      {/* Hero Section */}
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>
+              Hi, I'm <span className="highlight">Your Name</span>
+            </h1>
+            <h2>Full Stack Developer & UI/UX Designer</h2>
+            <p>I create beautiful, functional web applications that solve real-world problems.</p>
+            <div className="hero-buttons">
+              <button className="btn primary" onClick={() => scrollToSection('projects')}>
+                View My Work
+              </button>
+              <button className="btn secondary" onClick={() => scrollToSection('contact')}>
+                Get In Touch
+              </button>
+            </div>
+          </div>
+          <div className="hero-image">
+            <div className="profile-card">
+              <img src="https://via.placeholder.com/300x300/667eea/ffffff?text=Your+Photo" alt="Profile" />
+            </div>
+          </div>
+        </div>
+        <div className="scroll-indicator">
+          <div className="scroll-arrow"></div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="about">
+        <div className="container">
+          <h2 className="section-title">About Me</h2>
+          <div className="about-content">
+            <div className="about-text">
+              <p>
+                I'm a passionate full-stack developer with over 3 years of experience in creating 
+                web applications. I love turning complex problems into simple, beautiful designs.
+              </p>
+              <p>
+                When I'm not coding, you can find me exploring new technologies, contributing to 
+                open-source projects, or enjoying a good cup of coffee while reading tech blogs.
+              </p>
+              <div className="about-stats">
+                <div className="stat">
+                  <h3>50+</h3>
+                  <p>Projects Completed</p>
+                </div>
+                <div className="stat">
+                  <h3>3+</h3>
+                  <p>Years Experience</p>
+                </div>
+                <div className="stat">
+                  <h3>25+</h3>
+                  <p>Happy Clients</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="skills">
+        <div className="container">
+          <h2 className="section-title">Skills & Technologies</h2>
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
+              <div key={index} className="skill-item">
+                <div className="skill-info">
+                  <span className="skill-name">{skill.name}</span>
+                  <span className="skill-percentage">{skill.level}%</span>
+                </div>
+                <div className="skill-bar">
+                  <div 
+                    className="skill-progress" 
+                    style={{ width: `${skill.level}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="projects">
+        <div className="container">
+          <h2 className="section-title">Featured Projects</h2>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <div key={index} className="project-card">
+                <div className="project-image">
+                  <img src={project.image} alt={project.title} />
+                  <div className="project-overlay">
+                    <button className="btn primary">View Project</button>
+                  </div>
+                </div>
+                <div className="project-content">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-tech">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2 className="section-title">Get In Touch</h2>
+          <div className="contact-content">
+            <div className="contact-info">
+              <h3>Let's work together!</h3>
+              <p>
+                I'm always interested in new opportunities and exciting projects. 
+                Feel free to reach out if you'd like to collaborate.
+              </p>
+              <div className="contact-details">
+                <div className="contact-item">
+                  <span className="icon">📧</span>
+                  <span>your.email@example.com</span>
+                </div>
+                <div className="contact-item">
+                  <span className="icon">📱</span>
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="contact-item">
+                  <span className="icon">📍</span>
+                  <span>Your City, Country</span>
+                </div>
+              </div>
+            </div>
+            <form className="contact-form">
+              <div className="form-group">
+                <input type="text" placeholder="Your Name" required />
+              </div>
+              <div className="form-group">
+                <input type="email" placeholder="Your Email" required />
+              </div>
+              <div className="form-group">
+                <input type="text" placeholder="Subject" required />
+              </div>
+              <div className="form-group">
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" className="btn primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
-            <div className="footer-section">
-              <h3 className="footer-title">Your Name</h3>
-              <p className="footer-description">
-                Creating digital experiences that inspire and engage.
-              </p>
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <div className="social-links">
+              <a href="#" aria-label="GitHub">GitHub</a>
+              <a href="#" aria-label="LinkedIn">LinkedIn</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
             </div>
-            <div className="footer-section">
-              <h4 className="footer-heading">Quick Links</h4>
-              <div className="footer-links">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => setCurrentSection(section.id)}
-                    className="footer-link"
-                  >
-                    {section.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="footer-section">
-              <h4 className="footer-heading">Connect</h4>
-              <div className="footer-links">
-                <a href="https://linkedin.com/in/yourprofile" className="footer-link">LinkedIn</a>
-                <a href="https://github.com/yourprofile" className="footer-link">GitHub</a>
-                <a href="https://twitter.com/yourprofile" className="footer-link">Twitter</a>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
           </div>
         </div>
       </footer>
