@@ -44,7 +44,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,7 +152,7 @@ html {
 
 /* ===== HERO SECTION ===== */
 .hero-section {
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,7 +180,6 @@ html {
 
 .hero-text h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
   background: linear-gradient(to right, #fff, #a777e3);
   -webkit-background-clip: text;
   background-clip: text;

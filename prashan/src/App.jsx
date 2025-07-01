@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import NumberIncreaser from './components/NumberIncreaser';
 import './App.css';
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
           <div className="hero-content">
             <div className="profile-photo">
               <img
-                src="src/assets/profile.png"
+                src="src/assets/profile.jpg"
                 alt="Profile"
                 loading="lazy"
               />
@@ -102,6 +103,11 @@ function App() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* Stats Section with NumberIncreaser */}
+        <section className="stats-section">
+          <NumberIncreaser />
         </section>
 
         {/* Contact Section */}
