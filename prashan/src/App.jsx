@@ -1,40 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NumberIncreaser from './components/NumberIncreaser';
-import BrainVisualization from './components/BrainVisualization';
+import BrainConcept from './components/BrainConcept'; // New component
 import './App.css';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const brainSectionRef = useRef();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Header scroll effect
-      setScrolled(window.scrollY > 50);
-      
-      // Brain rotation scroll effect
-      if (brainSectionRef.current) {
-        const section = brainSectionRef.current;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
-        // Calculate scroll progress (0 to 1) when section is in viewport
-        const progress = Math.min(
-          1, 
-          Math.max(0, (scrollPosition - sectionTop + windowHeight * 0.5) / 
-          (sectionHeight - windowHeight * 0.5))
-        );
-        
-        setScrollProgress(progress);
-      }
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -89,7 +65,7 @@ function App() {
           <div className="hero-content">
             <div className="profile-photo">
               <img
-                src="src/assets/profile.jpg"
+                src="src/assets/profile.jpg" // Replace with your profile image path
                 alt="Profile"
                 loading="lazy"
               />
@@ -102,20 +78,8 @@ function App() {
           </div>
         </section>
 
-        {/* Brain Visualization Section - Updated with scroll control */}
-        <section 
-          id="brain" 
-          className="brain-section" 
-          ref={brainSectionRef}
-        >
-          <div className="container">
-            <h2>Interactive Brain Model</h2>
-            <p>Scroll to rotate the 3D brain visualization</p>
-            <div className="brain-visualization-wrapper">
-              <BrainVisualization scrollProgress={scrollProgress} />
-            </div>
-          </div>
-        </section>
+        {/* New Brain Concept Section - Replaces old visualization */}
+        <BrainConcept />
 
         {/* About Section */}
         <section id="about" className="section">
