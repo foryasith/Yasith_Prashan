@@ -364,3 +364,31 @@ html {
     width: 200px;
   }
 }
+
+/* Add to your existing App.css */
+.brain-section {
+  padding: 4rem 0;
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.brain-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.brain-visualization-wrapper {
+  margin: 2rem auto;
+  max-width: 600px;
+  height: 400px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .brain-visualization-wrapper {
+    height: 300px;
+  }
+}
