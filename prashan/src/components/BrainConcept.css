@@ -1,156 +1,126 @@
+/* Main section container - takes full viewport height */
 .brain-concept-section {
-  height: 200vh; /* Extra space for post-animation content */
+  min-height: 400vh; /* Allows for scroll animation space */
   position: relative;
   margin: 100px 0;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 8s ease;
+  pointer-events: none; /* Prevents interaction when hidden */
 }
 
+/* Visible state - triggered by scroll */
+.brain-concept-section.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container for all brain elements */
 .brain-container {
+  position: sticky; /* Makes it stick during scroll */
+  top: 12vh; /* How far from top of viewport to stick */
+  height: 110vh; /* Viewport height for animation space */
   width: 100%;
   max-width: 1200px;
-  height: 100vh; /* Full viewport height for animation phase */
-  left: 50%;
-}
-
-/* When fixed during animation */
-.brain-container.fixed-phase {
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* When scrolling normally after animation */
-.brain-container.scrolling-phase {
-  position: relative;
-  top: auto;
-  transform: none;
   margin: 0 auto;
-  padding-top: 100vh; /* Offset for the animation space */
 }
 
+/* Main brain styles */
 .main-brain {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  text-align: center;
+  z-index: 2; /* Above background elements */
+  transition: all 8s ease;
+  transform: translate(-50%, -50%); /* Centers using left/top positioning */
 }
 
-.base-brain {
-  max-width: 400px;
+.main-brain img {
   width: 100%;
+  max-width: 400px; /* Control main brain size */
   filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
-  transition: transform 0.3s ease;
 }
 
+/* Side brain containers */
 .left-brain, .right-brain {
   position: absolute;
-  top: 50%;
-  width: 30%;
-  max-width: 200px;
+  width: 30%; /* Relative to container */
+  max-width: 200px; /* Maximum size */
   transition: all 0.5s ease;
-  z-index: 2;
+  z-index: 3; /* Above main brain */
+  transform-origin: center; /* Rotation center point */
 }
 
-.left-brain {
-  left: 20%;
-  transform: translateY(-50%);
+/* Side brain images */
+.left-brain img, .right-brain img {
+  width: 100%;
+  filter: drop-shadow(0 0 15px rgba(0,0,0,0.3));
 }
 
-.right-brain {
-  right: 20%;
-  transform: translateY(-50%);
-}
-
+/* Brain buttons */
 .brain-button {
   position: absolute;
   padding: 12px 24px;
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 2s ease;
   white-space: nowrap;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
-  animation-delay: 0.3s;
+  opacity: 0; /* Hidden by default */
+  animation: fadeIn 2s forwards; /* Fade-in animation */
+  animation-delay: 0.15s; /* Delay after brain movement */
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
+/* Left button positioning */
 .left-button {
-  right: -140px;
+  left: -50px; /* Position right of left brain */
   top: 50%;
   transform: translateY(-50%);
   background: #4a6baf;
   color: white;
 }
 
+/* Right button positioning */
 .right-button {
-  left: -140px;
+  right: -50px; /* Position left of right brain */
   top: 50%;
   transform: translateY(-50%);
   background: #af4a4a;
   color: white;
 }
 
+/* Post-animation content */
 .post-animation-content {
-  padding: 100px 20px;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 20px;
   opacity: 0;
-  animation: slideUp 1s forwards;
+  transform: translateY(30px);
+  animation: slideUp 0.8s forwards;
+  animation-delay: 0s;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.post-animation-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.post-animation-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #666;
-}
-
-.cta-button {
-  padding: 15px 30px;
-  background: linear-gradient(45deg, #4a6baf, #6a5acd);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .brain-concept-section {
-    height: 150vh;
+  .brain-container {
+    top: 20vh;
+    height: 60vh;
   }
   
-  .base-brain {
+  .main-brain img {
     max-width: 250px;
   }
   
@@ -164,19 +134,11 @@
     font-size: 0.8rem;
   }
   
-  .left-button { 
+  .left-button {
     right: -100px;
   }
   
   .right-button {
     left: -100px;
-  }
-  
-  .post-animation-content {
-    padding: 50px 20px;
-  }
-  
-  .post-animation-content h2 {
-    font-size: 1.8rem;
   }
 }
