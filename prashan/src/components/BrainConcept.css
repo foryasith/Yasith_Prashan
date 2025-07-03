@@ -4,7 +4,7 @@
   position: relative;
   margin: 100px 0;
   opacity: 0; /* Hidden by default */
-  transition: opacity 8s ease;
+  transition: opacity 5s ease;
   pointer-events: none; /* Prevents interaction when hidden */
 }
 
@@ -28,7 +28,7 @@
 .main-brain {
   position: absolute;
   z-index: 2; /* Above background elements */
-  transition: all 8s ease;
+  transition: all 3s ease;
   transform: translate(-50%, -50%); /* Centers using left/top positioning */
 }
 
@@ -43,7 +43,7 @@
   position: absolute;
   width: 30%; /* Relative to container */
   max-width: 200px; /* Maximum size */
-  transition: all 0.5s ease;
+  transition: all 2.2s ease;
   z-index: 3; /* Above main brain */
   transform-origin: center; /* Rotation center point */
 }
@@ -77,6 +77,10 @@
   background: #4a6baf;
   color: white;
 }
+.left-button:hover {
+  transform: scale(1.05);
+  box-shadow: -40px 10px 150px rgba(255, 255, 255, 0.2);
+}
 
 /* Right button positioning */
 .right-button {
@@ -85,6 +89,10 @@
   transform: translateY(-50%);
   background: #af4a4a;
   color: white;
+}
+.right-button:hover {
+  transform: scale(1.05);
+  box-shadow: -40px 10px 150px rgba(255, 255, 255, 0.2);
 }
 
 /* Post-animation content */

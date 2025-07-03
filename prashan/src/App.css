@@ -152,28 +152,55 @@ html {
 
 /* ===== HERO SECTION ===== */
 .hero-section {
-  min-height: 10vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
 }
 
 .hero-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   gap: 3rem;
 }
 
-.profile-photo img {
+.hero-text {
   flex: 1;
-  margin-top: 260px;
-  margin-bottom: 100px;
-  max-width: 400px;
-  /* border-radius : 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #fff, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.profile-photo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-photo img {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  /* border-radius: 20px; */
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
   transition: transform 0.5s ease;
 }
 
@@ -181,20 +208,8 @@ html {
   transform: scale(1.03) rotate(-2deg);
 }
 
-.hero-text h1 {
-  flex: 1;
-  text-align: right;
-  margin-top: 280px;
-  font-size: 3rem;
-  background: linear-gradient(to right, #fff, #a777e3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 /* ===== PULSING CTA BUTTON ===== */
 .cta-button {
-  margin-bottom: 150px;
   background: linear-gradient(45deg, var(--primary), var(--secondary));
   color: white;
   padding: 15px 30px;
@@ -348,6 +363,17 @@ html {
   .hero-content {
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-text {
+    text-align: center;
+    order: 1;
+  }
+
+  .profile-photo {
+    justify-content: center;
+    order: 2;
   }
 
   .profile-photo img {
@@ -356,6 +382,11 @@ html {
 
   .hero-text h1 {
     font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    margin: 0 auto 2rem;
   }
 
   .section {
@@ -369,5 +400,20 @@ html {
 
   .contact-btn {
     width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }

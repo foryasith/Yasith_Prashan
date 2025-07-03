@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NumberIncreaser from './components/NumberIncreaser';
-import BrainConcept from './components/BrainConcept'; // New component
+import BrainConcept from './components/BrainConcept';
 import './App.css';
 
 function App() {
@@ -61,22 +61,22 @@ function App() {
       {/* Main Content */}
       <main className="main-content">
         {/* Hero Section */}
-        <section id="home" className="hero-section">
-          <div className="hero-content">
-            <div className="profile-photo">
-              <img
-                src="src/assets/profile.jpg" // Replace with your profile image path
-                alt="Profile"
-                loading="lazy"
-              />
-            </div>
-            <div className="hero-text">
-              <h1>Welcome to My Website</h1>
-              <p>I'm a passionate developer creating amazing experiences</p>
-              <button className="cta-button pulse">Get Started</button>
-            </div>
-          </div>
-        </section>
+<section id="home" className="hero-section">
+  <div className="hero-content">
+    <div className="hero-text">
+      <h1>Welcome to My Website</h1>
+      <p>I'm a passionate developer creating amazing experiences</p>
+      <button className="cta-button pulse">Get Started</button>
+    </div>
+    <div className="profile-photo">
+      <img
+        src="src/assets/profile.png" // Replace with your profile image path
+        alt="Profile"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
 
         {/* New Brain Concept Section - Replaces old visualization */}
         <BrainConcept />
