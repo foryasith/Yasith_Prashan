@@ -115,10 +115,20 @@
   background-color: #3498db;
   color: white;
 }
+.download-btn:hover {
+  background-color: #2980b9;
+  color: white;
+  scale: 1.05;
+}
 
 .view-inline-btn {
   background-color: #ecf0f1;
   color: #2c3e50;
+}
+.view-inline-btn:hover {
+  background-color: #2980b9;
+  color: white;
+  scale: 1.05;
 }
 
 .download-btn:hover {
