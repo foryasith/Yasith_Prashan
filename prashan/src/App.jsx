@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NumberIncreaser from './components/NumberIncreaser';
 import BrainConcept from './components/BrainConcept';
-import ResumePage from './components/ResumePage'; // Add this import
+import ResumePage from './components/StatsDashboard'; // Add this import
 import './App.css';
 
 function App() {
