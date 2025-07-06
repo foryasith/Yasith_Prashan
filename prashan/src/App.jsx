@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NumberIncreaser from './components/NumberIncreaser';
 import BrainConcept from './components/BrainConcept';
+import ResumePage from './components/ResumePage'; // Add this import
 import './App.css';
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
       {/* Glassmorphism Side Menu */}
       <nav className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          {['Home', 'About', 'Portfolio', 'Contact'].map((item) => (
+          {['Home', 'About', 'Portfolio', 'Resume', 'Contact'].map((item) => ( // Added Resume to menu
             <li key={item}>
               <a 
                 href={`#${item.toLowerCase()}`} 
@@ -61,24 +62,24 @@ function App() {
       {/* Main Content */}
       <main className="main-content">
         {/* Hero Section */}
-<section id="home" className="hero-section">
-  <div className="hero-content">
-    <div className="hero-text">
-      <h1>Welcome to My Website</h1>
-      <p>I'm a passionate developer creating amazing experiences</p>
-      <button className="cta-button pulse">Get Started</button>
-    </div>
-    <div className="profile-photo">
-      <img
-        src="src/assets/profile.png" // Replace with your profile image path
-        alt="Profile"
-        loading="lazy"
-      />
-    </div>
-  </div>
-</section>
+        <section id="home" className="hero-section">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1>Welcome to My Website</h1>
+              <p>I'm a passionate developer creating amazing experiences</p>
+              <button className="cta-button pulse">Get Started</button>
+            </div>
+            <div className="profile-photo">
+              <img
+                src="src/assets/profile.png"
+                alt="Profile"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
 
-        {/* New Brain Concept Section - Replaces old visualization */}
+        {/* New Brain Concept Section */}
         <BrainConcept />
 
         {/* About Section */}
@@ -112,6 +113,13 @@ function App() {
         {/* Stats Section with NumberIncreaser */}
         <section className="stats-section">
           <NumberIncreaser />
+        </section>
+
+        {/* New Resume Section */}
+        <section id="resume" className="section">
+          <div className="container">
+            <ResumePage />
+          </div>
         </section>
 
         {/* Contact Section */}
