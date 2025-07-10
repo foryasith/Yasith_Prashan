@@ -2,7 +2,6 @@ import React from 'react';
 import './StatsDashboard.css';
 
 const StatsDashboard = () => {
-  // Sample data - replace with your actual stats
   const statsData = {
     overview: {
       yearsExperience: 4,
@@ -10,10 +9,9 @@ const StatsDashboard = () => {
       technologiesUsed: 12,
       contributions: 147,
       roboticsProjects: 5,
-      hardwareSkills: ['Arduino', 'Raspberry Pi', 'ESP32'],
     },
     activity: {
-      commitsPerDay: [2, 5, 3, 7, 4, 6, 1], // Last 7 days
+      commitsPerDay: [2, 5, 3, 7, 4, 6, 1],
       timeOfDay: {
         morning: 15,
         afternoon: 35,
@@ -48,66 +46,58 @@ const StatsDashboard = () => {
 
   return (
     <div className="stats-dashboard">
-      <h2 className="dashboard-title">My Development Metrics</h2>
+      <header className="dashboard-header">
+        <h1 className="dashboard-title">Developer Insights</h1>
+        <p className="dashboard-subtitle">Quantifying my coding journey</p>
+      </header>
       
-      {/* Overview Cards */}
       <div className="overview-grid">
-        <div className="stat-card">
-          <h3>Years Coding</h3>
-          <div className="stat-value">{statsData.overview.yearsExperience}+</div>
-        </div>
-        <div className="stat-card">
-          <h3>Projects</h3>
-          <div className="stat-value">{statsData.overview.projectsCompleted}</div>
-          <div className="stat-subtext">
-            <span className="software-badge">{statsData.projects.filter(p => p.type === 'software').length} Software</span>
-            <span className="hardware-badge">{statsData.projects.filter(p => p.type === 'hardware').length} Hardware</span>
+        {[
+          { title: 'Years Coding', value: `${statsData.overview.yearsExperience}+`, icon: '⏳' },
+          { 
+            title: 'Projects', 
+            value: statsData.overview.projectsCompleted,
+            subtext: (
+              <>
+                <span className="software-badge">{statsData.projects.filter(p => p.type === 'software').length} Software</span>
+                <span className="hardware-badge">{statsData.projects.filter(p => p.type === 'hardware').length} Hardware</span>
+              </>
+            ),
+            icon: '🚀'
+          },
+          { title: 'Technologies', value: statsData.overview.technologiesUsed, icon: '🛠️' },
+          { title: 'Contributions', value: statsData.overview.contributions, icon: '💻' },
+        ].map((stat, index) => (
+          <div key={index} className="stat-card">
+            <div className="stat-icon">{stat.icon}</div>
+            <h3>{stat.title}</h3>
+            <div className="stat-value">{stat.value}</div>
+            {stat.subtext && <div className="stat-subtext">{stat.subtext}</div>}
           </div>
-        </div>
-        <div className="stat-card">
-          <h3>Technologies</h3>
-          <div className="stat-value">{statsData.overview.technologiesUsed}</div>
-        </div>
-        <div className="stat-card">
-          <h3>Contributions</h3>
-          <div className="stat-value">{statsData.overview.contributions}</div>
-        </div>
+        ))}
       </div>
 
-      {/* Skills Section */}
-      <div className="section-container skills-section">
-        <h3>Technical Skills</h3>
+      <section className="skills-section">
+        <h2 className="section-title">Technical Skills</h2>
         <div className="skills-grid">
-          <div className="skill-category">
-            <h4>Software</h4>
-            <ul>
-              {statsData.skills.software.map((skill, index) => (
-                <li key={index}>{skill}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="skill-category">
-            <h4>Hardware</h4>
-            <ul>
-              {statsData.skills.hardware.map((skill, index) => (
-                <li key={index}>{skill}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="skill-category">
-            <h4>Tools</h4>
-            <ul>
-              {statsData.skills.tools.map((skill, index) => (
-                <li key={index}>{skill}</li>
-              ))}
-            </ul>
-          </div>
+          {Object.entries(statsData.skills).map(([category, skills]) => (
+            <div key={category} className="skill-category">
+              <h3 className="skill-category-title">{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+              <div className="skills-list">
+                {skills.map((skill, index) => (
+                  <div key={index} className="skill-item">
+                    <span className="skill-bullet">•</span>
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* Language Distribution */}
-      <div className="chart-container">
-        <h3>Language Distribution</h3>
+      <section className="language-section">
+        <h2 className="section-title">Language Distribution</h2>
         <div className="language-chart">
           {statsData.languages.map((lang, index) => (
             <div 
@@ -119,93 +109,93 @@ const StatsDashboard = () => {
               }}
               title={`${lang.name}: ${lang.percentage}%`}
             >
-              <span className="language-label">{lang.name}</span>
+              <span className="language-label">{lang.name} ({lang.percentage}%)</span>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Activity Graphs */}
       <div className="activity-grid">
-        {/* Commits Per Day */}
-        <div className="chart-container">
-          <h3>Weekly Activity</h3>
+        <section className="activity-section">
+          <h2 className="section-title">Weekly Activity</h2>
           <div className="bar-chart">
             {statsData.activity.commitsPerDay.map((count, index) => (
               <div key={index} className="bar-container">
                 <div 
                   className="bar" 
                   style={{ height: `${count * 15}px` }}
+                  data-count={count}
                 ></div>
                 <div className="bar-label">{['S', 'M', 'T', 'W', 'T', 'F', 'S'][index]}</div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Time of Day */}
-        <div className="chart-container">
-          <h3>Coding Time Distribution</h3>
-          <div className="pie-chart">
-            {Object.entries(statsData.activity.timeOfDay).map(([time, percent], index) => (
-              <div 
-                key={time}
-                className="pie-segment"
-                style={{
-                  '--percentage': percent,
-                  '--color': `var(--${time}-color)`,
-                  '--start': index === 0 ? 0 : `calc(var(--start-prev) + var(--percentage-prev))`,
-                }}
-                title={`${time}: ${percent}%`}
-              ></div>
-            ))}
-            <div className="pie-center"></div>
+        <section className="time-section">
+          <h2 className="section-title">Coding Time</h2>
+          <div className="pie-chart-container">
+            <div className="pie-chart">
+              {Object.entries(statsData.activity.timeOfDay).map(([time, percent], index) => (
+                <div 
+                  key={time}
+                  className="pie-segment"
+                  style={{
+                    '--percentage': percent,
+                    '--color': `var(--${time}-color)`,
+                    '--start': index === 0 ? 0 : `calc(var(--start-prev) + var(--percentage-prev))`,
+                  }}
+                  title={`${time}: ${percent}%`}
+                ></div>
+              ))}
+            </div>
+            <div className="pie-legend">
+              {Object.entries(statsData.activity.timeOfDay).map(([time, percent]) => (
+                <div key={time} className="legend-item">
+                  <span className={`legend-color ${time}`}></span>
+                  <span className="legend-label">{time} ({percent}%)</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="pie-legend">
-            {Object.keys(statsData.activity.timeOfDay).map(time => (
-              <div key={time} className="legend-item">
-                <span className={`legend-color ${time}`}></span>
-                <span className="legend-label">{time}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </section>
       </div>
 
-      {/* Streak Counter */}
-      <div className="streak-container">
-        <h3>Coding Streak</h3>
+      <section className="streak-section">
+        <h2 className="section-title">Coding Streak</h2>
         <div className="streak-display">
-          <div className="streak-current">
-            <span className="streak-number">{statsData.activity.streak.current}</span>
-            <span className="streak-label">days current streak</span>
+          <div className="streak-card">
+            <div className="streak-number">{statsData.activity.streak.current}</div>
+            <div className="streak-label">Current streak</div>
           </div>
-          <div className="streak-divider"></div>
-          <div className="streak-record">
-            <span className="streak-number">{statsData.activity.streak.longest}</span>
-            <span className="streak-label">days longest streak</span>
+          <div className="streak-card">
+            <div className="streak-number">{statsData.activity.streak.longest}</div>
+            <div className="streak-label">Longest streak</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Top Projects */}
-      <div className="projects-container">
-        <h3>Top Projects</h3>
-        <div className="projects-list">
+      <section className="projects-section">
+        <h2 className="section-title">Featured Projects</h2>
+        <div className="projects-grid">
           {statsData.projects.map((project, index) => (
             <div key={index} className={`project-card ${project.type}`}>
-              <div className="project-name">{project.name}</div>
-              <div className="project-stars">
-                <span className="star-icon">★</span>
-                {project.stars}
+              <div className="project-content">
+                <h3 className="project-name">{project.name}</h3>
+                <div className="project-meta">
+                  <div className="project-stars">
+                    <span className="star-icon">★</span>
+                    {project.stars}
+                  </div>
+                  <span className="project-type">
+                    {project.type === 'hardware' ? '🤖 Hardware' : '💻 Software'}
+                  </span>
+                </div>
               </div>
-              <span className={`project-type ${project.type}`}>
-                {project.type === 'hardware' ? '🤖' : '💻'}
-              </span>
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 };
