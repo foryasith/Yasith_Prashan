@@ -12,12 +12,6 @@ const StatsDashboard = () => {
       roboticsProjects: 5,
       hardwareSkills: ['Arduino', 'Raspberry Pi', 'ESP32'],
     },
-    education: {
-      degree: "B.Sc Computer Science",
-      university: "Your University",
-      gpa: "3.7/4.0",
-      courses: ["Embedded Systems", "Algorithms", "Computer Architecture", "Robotics"]
-    },
     activity: {
       commitsPerDay: [2, 5, 3, 7, 4, 6, 1], // Last 7 days
       timeOfDay: {
@@ -77,26 +71,6 @@ const StatsDashboard = () => {
         <div className="stat-card">
           <h3>Contributions</h3>
           <div className="stat-value">{statsData.overview.contributions}</div>
-        </div>
-      </div>
-
-      {/* Education Section */}
-      <div className="section-container education-section">
-        <h3>Education</h3>
-        <div className="education-content">
-          <div className="education-main">
-            <div className="education-degree">{statsData.education.degree}</div>
-            <div className="education-university">{statsData.education.university}</div>
-            <div className="education-gpa">GPA: {statsData.education.gpa}</div>
-          </div>
-          <div className="education-courses">
-            <h4>Key Courses:</h4>
-            <ul>
-              {statsData.education.courses.map((course, index) => (
-                <li key={index}>{course}</li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
