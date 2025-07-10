@@ -17,7 +17,7 @@
 /* Container for all brain elements */
 .brain-container {
   position: sticky; /* Makes it stick during scroll */
-  top: 12vh; /* How far from top of viewport to stick */
+  top: 20vh; /* How far from top of viewport to stick */
   height: 110vh; /* Viewport height for animation space */
   width: 100%;
   max-width: 1200px;
@@ -33,8 +33,10 @@
 }
 
 .main-brain img {
+
   width: 100%;
-  max-width: 400px; /* Control main brain size */
+  margin-top: 10%;
+  max-width: 330px; /* Control main brain size */
   filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
 }
 
@@ -43,9 +45,11 @@
   position: absolute;
   width: 30%; /* Relative to container */
   max-width: 200px; /* Maximum size */
-  transition: all 2.2s ease;
+  transition: all 3.8s ease;
   z-index: 3; /* Above main brain */
   transform-origin: center; /* Rotation center point */
+  z-index: 1;
+
 }
 
 /* Side brain images */
@@ -71,28 +75,34 @@
 
 /* Left button positioning */
 .left-button {
-  left: -50px; /* Position right of left brain */
-  top: 50%;
+  left: -180px; /* Position right of left brain */
+  top: 60%;
   transform: translateY(-50%);
-  background: #4a6baf;
+  background: #365a65;
   color: white;
+  width: 150px; /* Fixed width for consistency */
+  height: 50px; /* Fixed height for consistency */
 }
 .left-button:hover {
-  transform: scale(1.05);
+  transform: scale(1.25);
   box-shadow: -40px 10px 150px rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease;
 }
 
 /* Right button positioning */
 .right-button {
-  right: -50px; /* Position left of right brain */
+  right: -180px; /* Position left of right brain */
   top: 50%;
   transform: translateY(-50%);
-  background: #af4a4a;
+  background: #FB755D;
   color: white;
+  width: 150px;
+  height: 50px;
 }
 .right-button:hover {
-  transform: scale(1.05);
+  transform: scale(1.25);
   box-shadow: -40px 10px 150px rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease;
 }
 
 /* Post-animation content */
@@ -149,4 +159,30 @@
   .right-button {
     left: -100px;
   }
+}
+
+.background-brain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-brain-image {
+  margin-top: -270px;
+  z-index: 1;
+  width: 48%;
+  height: 73%;
+  object-fit: contain;
+  opacity: 0.1; /* Adjust opacity as needed */
+  filter: blur(1px); /* Optional blur effect */
+}
+
+/* Visibility transition */
+.brain-concept-section.visible .background-brain-image,
+.brain-concept-section.visible .base-brain {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }

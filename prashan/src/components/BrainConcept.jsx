@@ -18,8 +18,9 @@ export default function BrainConcept() {
   // State for image positioning - easily adjustable
   const [positions, setPositions] = useState({
     main: { x: '50%', y: '30%' },   // Center of container
-    left: { x: '35%', y: '0%' },    // Left side
-    right: { x: '35%', y: '0%' }    // Right side
+    left: { x: '40.5%', y: '3.5%' },    // Left side
+    right: { x: '40.5%', y: '3.5%' },   // Right side
+    background: { x: '50%', y: '50%' } // Background position
   });
 
   useEffect(() => {
@@ -70,12 +71,29 @@ export default function BrainConcept() {
     top: positions.main.y
   };
 
+  const backgroundBrainStyle = {
+    opacity: sectionVisible ? 0.2 : 0,
+    transform: 'translate(-50%, -50%)',
+    left: positions.background.x,
+    top: positions.background.y,
+    transition: 'opacity 1s ease-in-out'
+  };
+
   return (
     <section 
       ref={sectionRef} 
       className={`brain-concept-section ${sectionVisible ? 'visible' : ''}`}
     >
       <div ref={containerRef} className="brain-container">
+        {/* Background Brain - Subtle effect behind everything */}
+        <div className="background-brain" style={backgroundBrainStyle}>
+          <img 
+            src="/images/background.png"
+            alt="Background brain concept"
+            className="background-brain-image"
+          />
+        </div>
+
         {/* Main Brain - Centered by default */}
         <div className="main-brain" style={mainBrainStyle}>
           <img 
@@ -105,13 +123,7 @@ export default function BrainConcept() {
           )}
         </div>
 
-        {/* Additional content appears after animation completes */}
-        {scrollProgress > 0.95 && (
-          <div className="post-animation-content">
-            <h2>Balanced Mind, Better Solutions</h2>
-            <p>Harnessing both creativity and logic for innovative development</p>
-          </div>
-        )}
+        
       </div>
     </section>
   );
