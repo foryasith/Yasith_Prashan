@@ -10,19 +10,6 @@ const StatsDashboard = () => {
       contributions: 147,
       roboticsProjects: 5,
     },
-    activity: {
-      commitsPerDay: [2, 5, 3, 7, 4, 6, 1],
-      timeOfDay: {
-        morning: 15,
-        afternoon: 35,
-        evening: 40,
-        night: 10,
-      },
-      streak: {
-        current: 14,
-        longest: 42,
-      },
-    },
     languages: [
       { name: 'JavaScript', percentage: 45, color: '#f1e05a' },
       { name: 'Python', percentage: 25, color: '#3572A5' },
@@ -112,66 +99,6 @@ const StatsDashboard = () => {
               <span className="language-label">{lang.name} ({lang.percentage}%)</span>
             </div>
           ))}
-        </div>
-      </section>
-
-      <div className="activity-grid">
-        <section className="activity-section">
-          <h2 className="section-title">Weekly Activity</h2>
-          <div className="bar-chart">
-            {statsData.activity.commitsPerDay.map((count, index) => (
-              <div key={index} className="bar-container">
-                <div 
-                  className="bar" 
-                  style={{ height: `${count * 15}px` }}
-                  data-count={count}
-                ></div>
-                <div className="bar-label">{['S', 'M', 'T', 'W', 'T', 'F', 'S'][index]}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="time-section">
-          <h2 className="section-title">Coding Time</h2>
-          <div className="pie-chart-container">
-            <div className="pie-chart">
-              {Object.entries(statsData.activity.timeOfDay).map(([time, percent], index) => (
-                <div 
-                  key={time}
-                  className="pie-segment"
-                  style={{
-                    '--percentage': percent,
-                    '--color': `var(--${time}-color)`,
-                    '--start': index === 0 ? 0 : `calc(var(--start-prev) + var(--percentage-prev))`,
-                  }}
-                  title={`${time}: ${percent}%`}
-                ></div>
-              ))}
-            </div>
-            <div className="pie-legend">
-              {Object.entries(statsData.activity.timeOfDay).map(([time, percent]) => (
-                <div key={time} className="legend-item">
-                  <span className={`legend-color ${time}`}></span>
-                  <span className="legend-label">{time} ({percent}%)</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section className="streak-section">
-        <h2 className="section-title">Coding Streak</h2>
-        <div className="streak-display">
-          <div className="streak-card">
-            <div className="streak-number">{statsData.activity.streak.current}</div>
-            <div className="streak-label">Current streak</div>
-          </div>
-          <div className="streak-card">
-            <div className="streak-number">{statsData.activity.streak.longest}</div>
-            <div className="streak-label">Longest streak</div>
-          </div>
         </div>
       </section>
 
