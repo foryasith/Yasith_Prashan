@@ -17,7 +17,7 @@
 /* Container for all brain elements */
 .brain-container {
   position: sticky; /* Makes it stick during scroll */
-  top: 20vh; /* How far from top of viewport to stick */
+  top: 18vh; /* How far from top of viewport to stick */
   height: 110vh; /* Viewport height for animation space */
   width: 100%;
   max-width: 1200px;
@@ -45,7 +45,7 @@
   position: absolute;
   width: 30%; /* Relative to container */
   max-width: 200px; /* Maximum size */
-  transition: all 3.8s ease;
+  transition: all 3.2s ease;
   z-index: 3; /* Above main brain */
   transform-origin: center; /* Rotation center point */
   z-index: 1;

@@ -9,7 +9,7 @@ const NumberIncreaser = () => {
   const stats = [
     { value: 508, label: 'Years of coding' },
     { value: 1060, label: 'Transit Points' },
-    { value: 7, label: 'Transit Operators' },
+    { value: 100000, label: 'Transit Operators' },
     { value: 12073, label: 'Happy Customers' }
   ];
 

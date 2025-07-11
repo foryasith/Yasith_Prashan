@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './StatsDashboard.css';
 
 const StatsDashboard = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+  
   const statsData = {
     overview: {
       yearsExperience: 4,
@@ -31,6 +34,53 @@ const StatsDashboard = () => {
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  // Animated number component
+  const AnimatedNumber = ({ value, duration = 2000 }) => {
+    const [displayValue, setDisplayValue] = useState(0);
+    
+    useEffect(() => {
+      let start = null;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const currentValue = Math.floor(progress * value);
+        setDisplayValue(currentValue);
+        
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      
+      if (isVisible) {
+        window.requestAnimationFrame(step);
+      }
+    }, [value, duration, isVisible]);
+
+    return <>{displayValue.toLocaleString()}</>;
+  };
+
   return (
     <div className="stats-dashboard">
       <header className="dashboard-header">
@@ -38,9 +88,14 @@ const StatsDashboard = () => {
         <p className="dashboard-subtitle">Quantifying my coding journey</p>
       </header>
       
-      <div className="overview-grid">
+      <div className="overview-grid" ref={containerRef}>
         {[
-          { title: 'Years Coding', value: `${statsData.overview.yearsExperience}+`, icon: '⏳' },
+          { 
+            title: 'Years Coding', 
+            value: statsData.overview.yearsExperience,
+            suffix: '+',
+            icon: '⏳' 
+          },
           { 
             title: 'Projects', 
             value: statsData.overview.projectsCompleted,
@@ -52,13 +107,30 @@ const StatsDashboard = () => {
             ),
             icon: '🚀'
           },
-          { title: 'Technologies', value: statsData.overview.technologiesUsed, icon: '🛠️' },
-          { title: 'Contributions', value: statsData.overview.contributions, icon: '💻' },
+          { 
+            title: 'Technologies', 
+            value: statsData.overview.technologiesUsed, 
+            icon: '🛠️' 
+          },
+          { 
+            title: 'Contributions', 
+            value: statsData.overview.contributions, 
+            icon: '💻' 
+          },
         ].map((stat, index) => (
           <div key={index} className="stat-card">
             <div className="stat-icon">{stat.icon}</div>
             <h3>{stat.title}</h3>
-            <div className="stat-value">{stat.value}</div>
+            <div className="stat-value">
+              {isVisible ? (
+                <>
+                  <AnimatedNumber value={stat.value} />
+                  {stat.suffix || ''}
+                </>
+              ) : (
+                '0' + (stat.suffix || '')
+              )}
+            </div>
             {stat.subtext && <div className="stat-subtext">{stat.subtext}</div>}
           </div>
         ))}

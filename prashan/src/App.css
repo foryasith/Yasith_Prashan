@@ -250,6 +250,9 @@ html {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.63);
+  position: relative;
+  overflow: hidden;
 }
 
 .section:nth-child(even) {
@@ -263,7 +266,8 @@ html {
 
 .section h2 {
   font-size: 2.5rem;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  margin-top: -12px;
   text-align: center;
   background: linear-gradient(to right, #fff, #a777e3);
   -webkit-background-clip: text;
