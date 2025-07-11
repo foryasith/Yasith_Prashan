@@ -14,11 +14,11 @@ const StatsDashboard = () => {
       roboticsProjects: 5,
     },
     languages: [
-      { name: 'JavaScript', percentage: 45, color: '#f1e05a' },
-      { name: 'Python', percentage: 25, color: '#3572A5' },
-      { name: 'TypeScript', percentage: 15, color: '#3178c6' },
-      { name: 'C++', percentage: 10, color: '#f34b7d' },
-      { name: 'Arduino', percentage: 5, color: '#00979D' },
+      { name: 'JavaScript', percentage: 40, color: '#f1e05a' },
+      { name: 'Python', percentage: 15, color: '#3572A5' },
+      { name: 'c', percentage: 30, color: '#3178c6' },
+      // { name: 'C++', percentage: 10, color: '#f34b7d' },
+      { name: 'Arduino', percentage: 15, color: '#00979D' },
     ],
     projects: [
       { name: 'Portfolio Website', stars: 22, type: 'software' },

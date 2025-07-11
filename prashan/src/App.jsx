@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import NumberIncreaser from './components/NumberIncreaser';
 import BrainConcept from './components/BrainConcept';
 import ResumePage from './components/StatsDashboard'; // Add this import
 import './App.css';
@@ -39,7 +38,7 @@ function App() {
       {/* Glassmorphism Side Menu */}
       <nav className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          {['Home', 'About', 'Portfolio', 'Resume', 'Contact'].map((item) => ( // Added Resume to menu
+          {['Home', 'About', 'Porjects', 'Experience', 'Contact'].map((item) => ( // Added Resume to menu
             <li key={item}>
               <a 
                 href={`#${item.toLowerCase()}`} 
@@ -114,11 +113,6 @@ While my core focus is technical problem-solving, I occasionally channel creativ
               ))}
             </div>
           </div>
-        </section>
-
-        {/* Stats Section with NumberIncreaser */}
-        <section className="stats-section">
-          <NumberIncreaser />
         </section>
 
         {/* New Resume Section */}
