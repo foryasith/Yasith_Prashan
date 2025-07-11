@@ -270,6 +270,30 @@ html {
   background-clip: text;
   color: transparent;
 }
+.section h3 {
+  font-size: 1.2rem;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.section h4 {
+  font-size: 1.6rem;
+  color: #a4a3a3;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.section p {
+  font-size: 1.2rem;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 10px;
+}
 
 /* ===== PORTFOLIO GALLERY ===== */
 .gallery {

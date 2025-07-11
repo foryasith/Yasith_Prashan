@@ -83,15 +83,13 @@ function App() {
         <section id="about" className="section">
           <div className="container">
             <h2>About Me</h2>
-            <p>Hi, I'm Yasith Prashan, a Computer Science undergraduate passionate about systems-level innovation. I specialize in building solutions where software meets hardware, from embedded programming to full-stack development, with a strong foundation in algorithms and system design.
-While my core focus is technical problem-solving, I occasionally channel creativity into multimedia projects, applying the same analytical approach to video production and digital design. This interdisciplinary perspective helps me build more intuitive and visually engaging technical solutions.
-Core Technical Skills:
-• Languages: C, C++, Java, Python, JavaScript
-• Systems: Embedded Development, Linux, Computer Architecture
-• Web/Mobile: React, Node.js, Android Development
-• Tools: Git, Docker, CI/CD Pipelines
-
-</p>
+            <h3>Hi, I'm Yasith Prashan, a Computer Science undergraduate passionate about systems-level innovation. I specialize in building solutions where software meets hardware, from embedded programming to full-stack development, with a strong foundation in algorithms and system design.
+While my core focus is technical problem-solving, I occasionally channel creativity into multimedia projects, applying the same analytical approach to video production and digital design. This interdisciplinary perspective helps me build more intuitive and visually engaging technical solutions.</h3>
+<h4>Core Technical Skills</h4>
+<p>  C, C++, Java, Python, JavaScript</p>
+<p>  Embedded Development, Linux, Computer Architecture</p>
+<p>  React, Node.js, Android Development</p>
+<p>  Git, Docker, CI/CD Pipelines</p>
           </div>
         </section>
 
