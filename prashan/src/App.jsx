@@ -21,7 +21,7 @@ function App() {
       {/* Dynamic Header (appears solid on scroll) */}
       <header className={`invisible-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="name-logo">
-          <h1>Yasith Prashan</h1>
+          <h1> Prashan</h1>
         </div>
         <button 
           className="menu-button" 
@@ -65,9 +65,9 @@ function App() {
         <section id="home" className="hero-section">
           <div className="hero-content">
             <div className="hero-text">
-              <h1>Welcome to My Website</h1>
-              <p>I'm a passionate developer creating amazing experiences</p>
-              <button className="cta-button pulse">Get Started</button>
+              <h1>Yasith Prashan</h1>
+              <p> Computer Science Undergraduate </p>
+              <h2> Bridging software and hardware through innovative solutions</h2>
             </div>
             <div className="profile-photo">
               <img
@@ -79,16 +79,24 @@ function App() {
           </div>
         </section>
 
-        {/* New Brain Concept Section */}
-        <BrainConcept />
-
         {/* About Section */}
         <section id="about" className="section">
           <div className="container">
             <h2>About Me</h2>
-            <p>Tell your story here. Share your background, skills, and what makes you unique.</p>
+            <p>Hi, I'm Yasith Prashan, a Computer Science undergraduate passionate about systems-level innovation. I specialize in building solutions where software meets hardware, from embedded programming to full-stack development, with a strong foundation in algorithms and system design.
+While my core focus is technical problem-solving, I occasionally channel creativity into multimedia projects, applying the same analytical approach to video production and digital design. This interdisciplinary perspective helps me build more intuitive and visually engaging technical solutions.
+Core Technical Skills:
+• Languages: C, C++, Java, Python, JavaScript
+• Systems: Embedded Development, Linux, Computer Architecture
+• Web/Mobile: React, Node.js, Android Development
+• Tools: Git, Docker, CI/CD Pipelines
+
+</p>
           </div>
         </section>
+
+        {/* New Brain Concept Section */}
+        <BrainConcept />
 
         {/* Portfolio Section */}
         <section id="portfolio" className="section">

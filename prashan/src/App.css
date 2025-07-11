@@ -64,6 +64,7 @@ html {
   background-clip: text;
   color: transparent;
   transition: all 0.3s ease;
+  margin-left: 10px;
 }
 
 /* ===== HAMBURGER MENU ===== */
@@ -175,18 +176,30 @@ html {
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #fff, #a777e3);
+  margin-top: 120px;
+  font-size: 3.5rem;
+  background: linear-gradient(to right, #a777e3, #2a2583);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-left: 0px;
 }
 
 .hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.4rem;
   max-width: 500px;
+  margin-left: 10px;
+  color: #a7a7a7;
+}
+
+.hero-text h2 {
+  font-size: 1.2rem;
+  margin-top: 0.1rem;
+  margin-bottom: 2rem;
+  margin-left: 10px;
+  color: #aeaeae;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .profile-photo {
@@ -206,26 +219,6 @@ html {
 
 .profile-photo img:hover {
   transform: scale(1.03) rotate(-2deg);
-}
-
-/* ===== PULSING CTA BUTTON ===== */
-.cta-button {
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.5);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(142, 68, 173, 0.6);
 }
 
 .pulse::before {
