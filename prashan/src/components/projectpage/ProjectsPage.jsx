@@ -4,7 +4,7 @@ const ProjectsPage = () => {
   return (
     <div className="projects-page">
       <h1>My Projects</h1>
-      {/* Your content here */}
+      {/* Add your projects content here */}
     </div>
   );
 };
