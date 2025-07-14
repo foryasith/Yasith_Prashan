@@ -48,4 +48,20 @@ function App() {
   );
 }
 
+
+function App() {
+  return (
+    <Router>
+      <div style={{ fontFamily: 'Arial, sans-serif' }}>
+        {/* Now using the defined NavigationBar */}
+        <NavigationBar />
+        
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
 export default App;
