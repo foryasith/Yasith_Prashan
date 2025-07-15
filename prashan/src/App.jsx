@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 import Home from './components/homepage/Home';
 import Test from './components/experiencepage/Test';
 import Animation from './Animation';
-import Projectpage from './components/projectpage/Projectpage';
+import Project from './components/projectpage/Project';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />
           <Route path="/animation" element={<Animation />} />
-          <Route path="/projects" element={<Projectpage />} />
+          <Route path="/projects" element={<Project />} />
           
         </Routes>
     </div>
