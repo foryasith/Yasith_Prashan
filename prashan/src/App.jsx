@@ -15,10 +15,7 @@ function App() {
           <Route path="/animation" element={<Animation />} />
           
         </Routes>
-      <h1>home from comp      onent</h1>
     </div>
-    
-    
   )
 }
 
