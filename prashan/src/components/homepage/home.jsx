@@ -1,13 +1,9 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';  // Import BrowserRouter, Routes, and Route
-import './homepage.css'; // Ensure the CSS file is imported
+import React from 'react'
 
-const home = () => {
+const Home = () => {
   return (
-    <div style={{ backgroundColor: 'lightblue', padding: '20px' }}>
-      <h1>Home Page Content</h1>
-    </div>
-  );
-};
+    <div>home from component</div>
+  )
+}
 
-export default home; // Must match import name
+export default Home
