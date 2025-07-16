@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import Home from './components/homepage/Home';
-import Test from './components/experiencepage/Test';
+import Experience from './components/experiencepage/Experience';
 import Animation from './Animation';
 import Project from './components/projectpage/Project';
 import Contact from './components/contactpage/contact';
@@ -12,7 +12,7 @@ function App() {
     <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/experience" element={<Experience />} />
           <Route path="/animation" element={<Animation />} />
           <Route path="/projects" element={<Project />} />
           <Route path="/contact" element={<Contact />} />

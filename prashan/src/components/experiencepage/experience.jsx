@@ -1,12 +1,10 @@
 import React from 'react';
 
-const ExperiencePage = () => {
+const Experience = () => {
   return (
-    <div className="experience-page">
+    <div>
       <h1>My Experience</h1>
-      {/* Your experience content */}
     </div>
   );
-};
-
-export default ExperiencePage;
+}
+export default Experience;
