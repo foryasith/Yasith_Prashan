@@ -1,0 +1,201 @@
+/* ===== VARIABLES & BASE STYLES ===== */
+:root {
+  --primary: #667eea;
+  --secondary: #8e44ad;
+  --dark-bg: #050e37;
+  --glass-white: rgba(255, 255, 255, 0.1);
+  --text-light: rgba(255, 255, 255, 0.9);
+  --ongoing-accent: #ff4757; /* Red accent for ongoing project */
+}
+
+/* ===== ANIMATED GRADIENT BACKGROUND ===== */
+.projects-page {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, var(--dark-bg), #140326, #1a0638);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding-top: 80px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* Ongoing Project Card Styles */
+.ongoing-project-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--ongoing-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem;
+  transition: all 0.3s ease;
+}
+
+.ongoing-project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 71, 87, 0.2);
+}
+
+.ongoing-project-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--ongoing-accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.ongoing-project-image-container {
+  height: 300px;
+  overflow: hidden;
+}
+
+.ongoing-project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ongoing-project-card:hover .ongoing-project-image {
+  transform: scale(1.03);
+}
+
+.ongoing-project-content {
+  padding: 2rem;
+}
+
+.ongoing-project-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.ongoing-project-description {
+  font-size: 1.1rem;
+  color: #a7a7a7;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.ongoing-project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.ongoing-project-link {
+  display: inline-block;
+  color: var(--ongoing-accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.ongoing-project-link:hover {
+  color: #ff6b81;
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--ongoing-accent);
+  border-radius: 4px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Finished Projects Section */
+.finished-projects-title {
+  font-size: 2rem;
+  margin: 3rem 0 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* ... (rest of your existing project card styles remain the same) ... */
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .ongoing-project-image-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ongoing-project-footer {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .ongoing-project-image-container {
+    height: 200px;
+  }
+  
+  .ongoing-project-content {
+    padding: 1.5rem;
+  }
+  
+  .ongoing-project-title {
+    font-size: 1.5rem;
+  }
+}
