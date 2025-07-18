@@ -1,0 +1,221 @@
+/* ===== VARIABLES & BASE STYLES ===== */
+:root {
+  --primary: #667eea;
+  --secondary: #8e44ad;
+  --dark-bg: #050e37;
+  --glass-white: rgba(255, 255, 255, 0.1);
+  --text-light: rgba(255, 255, 255, 0.9);
+  --ongoing-accent: #ff4757;
+}
+
+/* ===== ANIMATED GRADIENT BACKGROUND ===== */
+.experience-page {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, var(--dark-bg), #140326, #1a0638);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding-top: 80px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== EXPERIENCE CONTAINER ===== */
+.experience-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+.experience-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, #fff, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* ===== TIMELINE STYLES ===== */
+.experience-timeline {
+  position: relative;
+  padding-left: 50px;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--primary);
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+/* ===== EXPERIENCE CARDS ===== */
+.experience-card {
+  position: relative;
+  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border: 4px solid var(--dark-bg);
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+.experience-header {
+  margin-bottom: 1.5rem;
+}
+
+.experience-role {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #a777e3, #6a5acd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.experience-company {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.experience-duration {
+  font-size: 0.9rem;
+  color: #a7a7a7;
+  font-style: italic;
+}
+
+.experience-content {
+  padding-left: 1rem;
+}
+
+.experience-description {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+.experience-description li {
+  margin-bottom: 0.8rem;
+  color: #ccc;
+  line-height: 1.6;
+  position: relative;
+}
+
+.experience-description li::before {
+  content: '▹';
+  position: absolute;
+  left: -1rem;
+  color: var(--primary);
+}
+
+/* ===== SKILLS TAGS ===== */
+.experience-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.skill-tag {
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 30px;
+  }
+  
+  .experience-timeline::before {
+    left: 10px;
+  }
+  
+  .experience-card::before {
+    left: -30px;
+  }
+  
+  .experience-card {
+    padding: 1.5rem;
+  }
+  
+  .experience-role {
+    font-size: 1.3rem;
+  }
+  
+  .experience-description li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-container {
+    padding: 1.5rem;
+  }
+  
+  .experience-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .experience-skills {
+    gap: 0.5rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+  }
+  
+  .experience-card::before {
+    width: 16px;
+    height: 16px;
+    left: -26px;
+  }
+}

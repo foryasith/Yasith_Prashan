@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 import Home from './components/homepage/Home';
 import Contact from './components/contactpage/contact';
 import Project from './components/projectpage/Project';
+import Experience from './components/experiencepage/Experience';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/project" element={<Project />} />
+          <Route path="/projects" element={<Project />} />
+          <Route path="/experience" element={<Experience />} />
         </Routes>
     </div>
   )
