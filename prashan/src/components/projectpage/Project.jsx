@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
+  const [starredProjects, setStarredProjects] = useState(new Set());
+
+  const toggleStar = (projectId) => {
+    const newStarred = new Set(starredProjects);
+    if (newStarred.has(projectId)) {
+      newStarred.delete(projectId);
+    } else {
+      newStarred.add(projectId);
+    }
+    setStarredProjects(newStarred);
+  };
+
   const ongoingProject = {
     id: 0,
     title: "My Current Focus Project",
@@ -75,7 +87,7 @@ const Projects = () => {
       <div className="projects-container">
         <h1 className="projects-title">My Projects</h1>
         
-        {/* Special Ongoing Project Card */}
+        {/* Ongoing Project Card */}
         <div className="ongoing-project-card">
           <div className="ongoing-project-badge">Ongoing Project</div>
           <div className="ongoing-project-image-container">
@@ -99,18 +111,35 @@ const Projects = () => {
         <div className="projects-grid">
           {finishedProjects.map((project) => (
             <div key={project.id} className="project-card">
-              <div className="project-image-container">
-                <img src={project.imageUrl} alt={project.title} className="project-image" />
-                <div className="project-tech-tags">
-                  {project.tech.map((tech, index) => (
-                    <span key={index} className="tech-tag">{tech}</span>
-                  ))}
-                </div>
+              <div className="star-button-container">
+                <button 
+                  className={`star-button ${starredProjects.has(project.id) ? 'starred' : ''}`}
+                  onClick={() => toggleStar(project.id)}
+                  aria-label={starredProjects.has(project.id) ? 'Unstar project' : 'Star project'}
+                >
+                  <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path 
+                      fill="currentColor" 
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                    />
+                  </svg>
+                </button>
               </div>
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <a href={project.link} className="project-link">View Project →</a>
+              
+              <div className="project-content-wrapper">
+                <div className="project-image-container">
+                  <img src={project.imageUrl} alt={project.title} className="project-image" />
+                  <div className="project-tech-tags">
+                    {project.tech.map((tech, index) => (
+                      <span key={index} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="project-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <a href={project.link} className="project-link">View Project →</a>
+                </div>
               </div>
             </div>
           ))}
