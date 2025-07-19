@@ -84,13 +84,22 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="section">
+        {/* Social Links Section */}
+        <section id="social" className="section">
           <div className="container">
-            <h2>Get In Touch</h2>
-            <p>Let's connect and work together!</p>
-            <div className="contact-buttons">
-              <Link to="/contact" className="contact-btn">Contact Page</Link>
+            <div className="social-links">
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-twitter"></i> Twitter
+              </a>
+              <a href="mailto:your.email@example.com">
+                <i className="fas fa-envelope"></i> Email
+              </a>
             </div>
           </div>
         </section>
