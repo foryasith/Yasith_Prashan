@@ -4,6 +4,7 @@ import Header from '../Header';
 import BrainConcept from '../BrainConcept.jsx';
 import ResumePage from '../StatsDashboard.jsx';
 import './Home.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -86,23 +87,23 @@ const Home = () => {
 
         {/* Social Links Section */}
         <section id="social" className="section">
-          <div className="container">
-            <div className="social-links">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin"></i> LinkedIn
-              </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-twitter"></i> Twitter
-              </a>
-              <a href="mailto:your.email@example.com">
-                <i className="fas fa-envelope"></i> Email
-              </a>
-            </div>
-          </div>
-        </section>
+  <div className="container">
+    <div className="social-links">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i className="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i className="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <i className="fab fa-twitter"></i>
+      </a>
+      <a href="mailto:your.email@example.com" aria-label="Email">
+        <i className="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+</section>
       </main>
     </div>
   );
