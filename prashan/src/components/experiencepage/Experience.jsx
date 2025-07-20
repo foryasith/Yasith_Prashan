@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header';
 import './Experience.css';
 
 const Experience = () => {
-
   useEffect(() => {
-      document.title = "Experience";
-    }, []);
-    
+    document.title = "Experience";
+  }, []);
+
   return (
     <div className="experience-page">
       <Header />

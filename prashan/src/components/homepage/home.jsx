@@ -7,9 +7,11 @@ import './Home.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    document.title = "Yasith Prashan"; // Set the page title 
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
