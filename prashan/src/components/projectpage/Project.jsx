@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
   const [starredProjects, setStarredProjects] = useState(new Set());
+
+  // Load starred projects from localStorage on component mount
+  useEffect(() => {
+    const savedStarred = localStorage.getItem('starredProjects');
+    if (savedStarred) {
+      setStarredProjects(new Set(JSON.parse(savedStarred)));
+    }
+  }, []);
 
   const toggleStar = (projectId) => {
     const newStarred = new Set(starredProjects);
@@ -13,6 +21,8 @@ const Projects = () => {
       newStarred.add(projectId);
     }
     setStarredProjects(newStarred);
+    // Save to localStorage
+    localStorage.setItem('starredProjects', JSON.stringify(Array.from(newStarred)));
   };
 
   const ongoingProject = {
@@ -110,7 +120,7 @@ const Projects = () => {
         <h2 className="finished-projects-title">Finished Projects</h2>
         <div className="projects-grid">
           {finishedProjects.map((project) => (
-            <div key={project.id} className="project-card">
+            <div key={project.id} className={`project-card ${starredProjects.has(project.id) ? 'starred' : ''}`}>
               <div className="star-button-container">
                 <button 
                   className={`star-button ${starredProjects.has(project.id) ? 'starred' : ''}`}

@@ -7,6 +7,7 @@
   --text-light: rgba(255, 255, 255, 0.9);
   --ongoing-accent: #ff4757;
   --star-color: #FFD700;
+  --starred-bg: rgba(255, 215, 0, 0.1);
 }
 
 /* ===== ANIMATED GRADIENT BACKGROUND ===== */
@@ -176,6 +177,11 @@
   transition: all 0.3s ease;
   display: flex;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card.starred {
+  background: var(--starred-bg);
+  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .project-card:hover {
