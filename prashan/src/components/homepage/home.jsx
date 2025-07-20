@@ -86,7 +86,7 @@ const Home = () => {
         </section>
 
         {/* Social Links Section */}
-        <section id="social" className="section">
+        <section id="social" className="sections">
   <div className="container">
     <div className="social-links">
       <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
