@@ -127,14 +127,14 @@ const Contact = () => {
               <i className="fas fa-envelope"></i>
               <div>
                 <h3>Email</h3>
-                <span>prashan@yasith.dev</span>
+                <span>yasithprashan@gmail.com</span>
               </div>
             </div>
             <div className="info-item">
               <i className="fas fa-phone-alt"></i>
               <div>
                 <h3>Phone</h3>
-                <span>+94 76 123 4567</span>
+                <span>+94 76 866 9806</span>
               </div>
             </div>
             <div className="info-item">

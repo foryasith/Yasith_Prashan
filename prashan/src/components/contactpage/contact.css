@@ -154,6 +154,10 @@
   color: #ccc;
 }
 
+.info-item.fa-phone-alt {
+  rotate: 180deg;
+}
+
 .success-message {
   margin-top: 1rem;
   padding: 0.8rem;
