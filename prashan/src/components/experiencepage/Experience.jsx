@@ -3,6 +3,11 @@ import Header from '../Header';
 import './Experience.css';
 
 const Experience = () => {
+
+  useEffect(() => {
+      document.title = "Experience";
+    }, []);
+    
   return (
     <div className="experience-page">
       <Header />

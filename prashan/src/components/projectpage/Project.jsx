@@ -3,6 +3,11 @@ import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
+
+  useEffect(() => {
+    document.title = "Projects";
+  }, []);
+
   const [starredProjects, setStarredProjects] = useState(new Set());
 
   // Load starred projects from localStorage on component mount
