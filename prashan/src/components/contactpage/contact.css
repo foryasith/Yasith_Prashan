@@ -154,8 +154,8 @@
   color: #ccc;
 }
 
-.info-item.fa-phone-alt {
-  rotate: 180deg;
+.info-item .fa-phone-alt {
+  rotate: 90deg;
 }
 
 .success-message {
