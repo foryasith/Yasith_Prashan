@@ -3,7 +3,6 @@ import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
-
   useEffect(() => {
     document.title = "Projects";
   }, []);
@@ -36,7 +35,8 @@ const Projects = () => {
     description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
     imageUrl: "https://via.placeholder.com/1200x400",
     link: "#",
-    status: "ongoing"
+    status: "ongoing",
+    type: "software" // Added project type
   };
 
   const finishedProjects = [
@@ -47,7 +47,8 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/1a0638/ffffff?text=E-Commerce",
       link: "#",
       status: "finished",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"]
+      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      type: "software" // Added project type
     },
     {
       id: 2,
@@ -56,7 +57,8 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/140326/ffffff?text=Task+App",
       link: "#",
       status: "finished",
-      tech: ["React", "Firebase", "Material UI"]
+      tech: ["React", "Firebase", "Material UI"],
+      type: "software" // Added project type
     },
     {
       id: 3,
@@ -65,7 +67,8 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/050e37/ffffff?text=Weather",
       link: "#",
       status: "finished",
-      tech: ["JavaScript", "API Integration", "CSS3"]
+      tech: ["JavaScript", "API Integration", "CSS3"],
+      type: "software" // Added project type
     },
     {
       id: 4,
@@ -74,7 +77,8 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/8e44ad/ffffff?text=Portfolio",
       link: "#",
       status: "finished",
-      tech: ["React", "GSAP", "SCSS"]
+      tech: ["React", "GSAP", "SCSS"],
+      type: "software" // Added project type
     },
     {
       id: 5,
@@ -83,7 +87,8 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/667eea/ffffff?text=Recipes",
       link: "#",
       status: "finished",
-      tech: ["Vue.js", "Spoonacular API", "Vuex"]
+      tech: ["Vue.js", "Spoonacular API", "Vuex"],
+      type: "software" // Added project type
     },
     {
       id: 6,
@@ -92,9 +97,20 @@ const Projects = () => {
       imageUrl: "https://via.placeholder.com/400x250/ff4757/ffffff?text=Fitness",
       link: "#",
       status: "finished",
-      tech: ["React Native", "Firebase", "Expo"]
+      tech: ["React Native", "Firebase", "Expo"],
+      type: "software" // Added project type
     }
   ];
+
+  // Save project count to localStorage whenever projects change
+  useEffect(() => {
+    const projectCount = {
+      total: finishedProjects.length + 1, // +1 for ongoing project
+      software: finishedProjects.filter(p => p.type === 'software').length + 1,
+      hardware: finishedProjects.filter(p => p.type === 'hardware').length
+    };
+    localStorage.setItem('projectCount', JSON.stringify(projectCount));
+  }, [finishedProjects]);
 
   return (
     <div className="projects-page">

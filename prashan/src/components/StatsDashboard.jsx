@@ -4,13 +4,24 @@ import './StatsDashboard.css';
 const StatsDashboard = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [projectCount, setProjectCount] = useState({
+    total: 0,
+    software: 0,
+    hardware: 0
+  });
   const containerRef = useRef(null);
   
   useEffect(() => {
+    // Load project count from localStorage
+    const savedCount = localStorage.getItem('projectCount');
+    if (savedCount) {
+      setProjectCount(JSON.parse(savedCount));
+    }
+
+    // Load starred projects
     const savedStarred = localStorage.getItem('starredProjects');
     if (savedStarred) {
       const starredIds = JSON.parse(savedStarred);
-      // Map starred IDs to project data (in a real app, you'd fetch this data)
       const projects = [
         {
           id: 1,
@@ -83,11 +94,10 @@ const StatsDashboard = () => {
 
   const statsData = {
     overview: {
-      yearsExperience: 4,
-      projectsCompleted: 19,
+      yearsExperience: 2,
+      projectsCompleted: projectCount.total || 19, // Use dynamic count if available
       technologiesUsed: 12,
-      contributions: 147,
-      roboticsProjects: 5,
+      roboticsProjects: projectCount.hardware || 5, // Use dynamic count if available
     },
     languages: [
       { name: 'JavaScript', percentage: 40, color: '#f1e05a' },
@@ -156,12 +166,7 @@ const StatsDashboard = () => {
             title: 'Technologies', 
             value: statsData.overview.technologiesUsed, 
             icon: '🛠️' 
-          },
-          { 
-            title: 'Contributions', 
-            value: statsData.overview.contributions, 
-            icon: '💻' 
-          },
+          }
         ].map((stat, index) => (
           <div key={index} className="stat-card">
             <div className="stat-icon">{stat.icon}</div>
