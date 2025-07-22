@@ -7,7 +7,6 @@ import './Home.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
-
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,22 +59,34 @@ const Home = () => {
         {/* Brain Concept Section */}
         <BrainConcept />
 
-        {/* Portfolio Section */}
-        <section id="portfolio" className="section">
+        {/* Current Project Section */}
+        <section id="current-project" className="section">
           <div className="container">
-            <h2>My Work</h2>
-            <div className="gallery">
-              {[1, 2, 3].map((project) => (
-                <div className="gallery-item" key={project}>
-                  <img 
-                    src={`https://via.placeholder.com/300x200/${project % 2 === 0 ? 'a29bfe' : '6c5ce7'}/ffffff?text=Project+${project}`} 
-                    alt={`Project ${project}`} 
-                    loading="lazy"
-                  />
-                  <h3>Project {project}</h3>
-                  <p>Description of your project {project}</p>
+            <h2>Current Focus</h2>
+            <div className="current-project-card">
+              <div className="current-project-content">
+                <h3>My Current Focus Project</h3>
+                <p>
+                  This is my main ongoing project where I'm currently focusing my efforts. 
+                  It showcases my latest work and the technologies I'm mastering right now.
+                </p>
+                <div className="project-progress">
+                  <span>Progress: 65%</span>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: '65%' }}></div>
+                  </div>
                 </div>
-              ))}
+                <Link to="/projects" className="project-link">
+                  View Project Details →
+                </Link>
+              </div>
+              <div className="current-project-image">
+                <img 
+                  src= "./assets/shot.jpg"
+                  alt="Current Projects" 
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -89,23 +100,23 @@ const Home = () => {
 
         {/* Social Links Section */}
         <section id="social" className="sections">
-  <div className="container">
-    <div className="social-links">
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <i className="fab fa-github"></i>
-      </a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <i className="fab fa-linkedin"></i>
-      </a>
-      <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-        <i className="fab fa-twitter"></i>
-      </a>
-      <a href="mailto:your.email@example.com" aria-label="Email">
-        <i className="fas fa-envelope"></i>
-      </a>
-    </div>
-  </div>
-</section>
+          <div className="container">
+            <div className="social-links">
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i className="fab fa-linkedin"></i>
+              </a>
+              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="mailto:your.email@example.com" aria-label="Email">
+                <i className="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
