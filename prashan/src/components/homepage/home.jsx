@@ -71,7 +71,7 @@ const Home = () => {
                   It showcases my latest work and the technologies I'm mastering right now.
                 </p>
                 <div className="project-progress">
-                  <span>Progress: 65%</span>
+                  <span>Progress: 5%</span>
                   <div className="progress-bar">
                     <div className="progress-fill" style={{ width: '65%' }}></div>
                   </div>
