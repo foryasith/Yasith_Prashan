@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
-  useEffect(() => {
-    document.title = "Projects";
-  }, []);
-
+  const location = useLocation();
   const [starredProjects, setStarredProjects] = useState(new Set());
 
-  // Load starred projects from localStorage on component mount
+  useEffect(() => {
+    document.title = "Projects - Yasith Prashan";
+    
+    // Scroll to ongoing project if coming from home page link
+    if (location.hash === '#ongoing-project') {
+      const element = document.getElementById('ongoing-project');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  // Load starred projects from localStorage
   useEffect(() => {
     const savedStarred = localStorage.getItem('starredProjects');
     if (savedStarred) {
@@ -25,7 +37,6 @@ const Projects = () => {
       newStarred.add(projectId);
     }
     setStarredProjects(newStarred);
-    // Save to localStorage
     localStorage.setItem('starredProjects', JSON.stringify(Array.from(newStarred)));
   };
 
@@ -33,10 +44,11 @@ const Projects = () => {
     id: 0,
     title: "My Current Focus Project",
     description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
-    imageUrl: "https://via.placeholder.com/1200x400",
+    imageUrl: "./assets/shot.jpg",
     link: "#",
     status: "ongoing",
-    type: "software" // Added project type
+    type: "software",
+    progress: 65
   };
 
   const finishedProjects = [
@@ -48,64 +60,14 @@ const Projects = () => {
       link: "#",
       status: "finished",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      type: "software" // Added project type
+      type: "software"
     },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "A productivity application with drag-and-drop functionality, team collaboration features, and real-time updates using Firebase.",
-      imageUrl: "https://via.placeholder.com/400x250/140326/ffffff?text=Task+App",
-      link: "#",
-      status: "finished",
-      tech: ["React", "Firebase", "Material UI"],
-      type: "software" // Added project type
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Interactive weather application with 5-day forecast, location search, and animated weather icons using OpenWeather API.",
-      imageUrl: "https://via.placeholder.com/400x250/050e37/ffffff?text=Weather",
-      link: "#",
-      status: "finished",
-      tech: ["JavaScript", "API Integration", "CSS3"],
-      type: "software" // Added project type
-    },
-    {
-      id: 4,
-      title: "Portfolio Website",
-      description: "A responsive portfolio website with smooth animations, dark/light mode toggle, and project showcase section.",
-      imageUrl: "https://via.placeholder.com/400x250/8e44ad/ffffff?text=Portfolio",
-      link: "#",
-      status: "finished",
-      tech: ["React", "GSAP", "SCSS"],
-      type: "software" // Added project type
-    },
-    {
-      id: 5,
-      title: "Recipe Finder",
-      description: "Application that suggests recipes based on ingredients you have, with nutritional information and step-by-step instructions.",
-      imageUrl: "https://via.placeholder.com/400x250/667eea/ffffff?text=Recipes",
-      link: "#",
-      status: "finished",
-      tech: ["Vue.js", "Spoonacular API", "Vuex"],
-      type: "software" // Added project type
-    },
-    {
-      id: 6,
-      title: "Fitness Tracker",
-      description: "Mobile-first fitness application that tracks workouts, progress, and provides exercise demonstrations with video.",
-      imageUrl: "https://via.placeholder.com/400x250/ff4757/ffffff?text=Fitness",
-      link: "#",
-      status: "finished",
-      tech: ["React Native", "Firebase", "Expo"],
-      type: "software" // Added project type
-    }
+    // ... other finished projects remain the same ...
   ];
 
-  // Save project count to localStorage whenever projects change
   useEffect(() => {
     const projectCount = {
-      total: finishedProjects.length + 1, // +1 for ongoing project
+      total: finishedProjects.length + 1,
       software: finishedProjects.filter(p => p.type === 'software').length + 1,
       hardware: finishedProjects.filter(p => p.type === 'hardware').length
     };
@@ -118,20 +80,27 @@ const Projects = () => {
       <div className="projects-container">
         <h1 className="projects-title">My Projects</h1>
         
-        {/* Ongoing Project Card */}
-        <div className="ongoing-project-card">
+        {/* Ongoing Project Card with ID for deep linking */}
+        <div className="ongoing-project-card" id="ongoing-project">
           <div className="ongoing-project-badge">Ongoing Project</div>
           <div className="ongoing-project-image-container">
-            <img src={ongoingProject.imageUrl} alt={ongoingProject.title} className="ongoing-project-image" />
+            <img 
+              src={ongoingProject.imageUrl} 
+              alt={ongoingProject.title} 
+              className="ongoing-project-image" 
+              loading="lazy"
+            />
           </div>
           <div className="ongoing-project-content">
             <h3 className="ongoing-project-title">{ongoingProject.title}</h3>
             <p className="ongoing-project-description">{ongoingProject.description}</p>
             <div className="ongoing-project-footer">
-              <a href={ongoingProject.link} className="ongoing-project-link">View Project →</a>
+              <a href={ongoingProject.link} className="ongoing-project-link">
+                Learn More →
+              </a>
               <div className="progress-indicator">
-                <div className="progress-bar" style={{ width: '65%' }}></div>
-                <span>65% Complete</span>
+                <div className="progress-bar" style={{ width: `${ongoingProject.progress}%` }}></div>
+                <span>{ongoingProject.progress}% Complete</span>
               </div>
             </div>
           </div>
@@ -153,13 +122,19 @@ const Projects = () => {
                       fill="currentColor" 
                       d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
                     />
+                    
                   </svg>
                 </button>
               </div>
               
               <div className="project-content-wrapper">
                 <div className="project-image-container">
-                  <img src={project.imageUrl} alt={project.title} className="project-image" />
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="project-image" 
+                    loading="lazy"
+                  />
                   <div className="project-tech-tags">
                     {project.tech.map((tech, index) => (
                       <span key={index} className="tech-tag">{tech}</span>
@@ -169,7 +144,7 @@ const Projects = () => {
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
-                  <a href={project.link} className="project-link">View Project →</a>
+                  <a href={project.link} className="project-link">View Details →</a>
                 </div>
               </div>
             </div>

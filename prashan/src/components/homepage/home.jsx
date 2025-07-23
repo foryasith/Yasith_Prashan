@@ -10,11 +10,19 @@ const Home = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.title = "Yasith Prashan"; // Set the page title 
+    document.title = "Yasith Prashan";
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const ongoingProject = {
+    title: "My Current Focus Project",
+    description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
+    imageUrl: "./assets/shot.jpg",
+    link: "/projects#ongoing-project", // Updated to link to specific section
+    progress: 65
+  };
 
   return (
     <div className="Home">
@@ -65,24 +73,25 @@ const Home = () => {
             <h2>Current Focus</h2>
             <div className="current-project-card">
               <div className="current-project-content">
-                <h3>My Current Focus Project</h3>
-                <p>
-                  This is my main ongoing project where I'm currently focusing my efforts. 
-                  It showcases my latest work and the technologies I'm mastering right now.
-                </p>
+                <h3>{ongoingProject.title}</h3>
+                <p>{ongoingProject.description}</p>
                 <div className="project-progress">
-                  <span>Progress: 5%</span>
+                  <span>Progress: {ongoingProject.progress}%</span>
                   <div className="progress-bar">
-                    <div className="progress-fill" style={{ width: '65%' }}></div>
+                    <div className="progress-fill" style={{ width: `${ongoingProject.progress}%` }}></div>
                   </div>
                 </div>
-                <Link to="/projects" className="project-link">
+                <Link 
+                  to={ongoingProject.link} 
+                  className="project-link"
+                  state={{ scrollToOngoing: true }} // Optional: Add state for scrolling
+                >
                   View Project Details →
                 </Link>
               </div>
               <div className="current-project-image">
                 <img 
-                  src= "./assets/shot.jpg"
+                  src={ongoingProject.imageUrl}
                   alt="Current Projects" 
                   loading="lazy"
                 />
