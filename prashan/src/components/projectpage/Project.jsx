@@ -24,7 +24,7 @@ const Projects = () => {
     title: "My Current Focus Project",
     description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
     imageUrl: "./assets/shot.jpg",
-    link: "#",
+    githubLink: "https://github.com/yourusername/current-project",
     status: "ongoing",
     type: "software",
     progress: 65
@@ -36,7 +36,7 @@ const Projects = () => {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include product filtering, cart system, and Stripe payment integration.",
       imageUrl: "https://via.placeholder.com/400x250/1a0638/ffffff?text=E-Commerce",
-      link: "#",
+      githubLink: "https://github.com/yourusername/ecommerce-platform",
       status: "finished",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       type: "software"
@@ -46,7 +46,7 @@ const Projects = () => {
       title: "Task Management App",
       description: "A productivity application for organizing tasks with drag-and-drop functionality and team collaboration features.",
       imageUrl: "https://via.placeholder.com/400x250/2a0947/ffffff?text=Task+App",
-      link: "#",
+      githubLink: "https://github.com/yourusername/task-manager",
       status: "finished",
       tech: ["React", "Firebase", "Material UI", "Redux"],
       type: "software"
@@ -56,7 +56,7 @@ const Projects = () => {
       title: "Health Fitness Tracker",
       description: "Mobile application that tracks workouts, nutrition, and health metrics with data visualization.",
       imageUrl: "https://via.placeholder.com/400x250/3b0b5a/ffffff?text=Fitness+Tracker",
-      link: "#",
+      githubLink: "https://github.com/yourusername/fitness-tracker",
       status: "finished",
       tech: ["React Native", "GraphQL", "Node.js", "MongoDB"],
       type: "software"
@@ -66,7 +66,7 @@ const Projects = () => {
       title: "Smart Home Dashboard",
       description: "IoT control panel for managing smart home devices with real-time monitoring and automation.",
       imageUrl: "https://via.placeholder.com/400x250/4c0c6d/ffffff?text=Smart+Home",
-      link: "#",
+      githubLink: "https://github.com/yourusername/smart-home-dashboard",
       status: "finished",
       tech: ["React", "Python", "Raspberry Pi", "MQTT"],
       type: "hardware"
@@ -76,7 +76,7 @@ const Projects = () => {
       title: "AI Image Recognition",
       description: "Machine learning model that classifies images with a custom-trained convolutional neural network.",
       imageUrl: "https://via.placeholder.com/400x250/5d0d80/ffffff?text=AI+Image",
-      link: "#",
+      githubLink: "https://github.com/yourusername/ai-image-recognition",
       status: "finished",
       tech: ["Python", "TensorFlow", "OpenCV", "Flask"],
       type: "software"
@@ -111,6 +111,14 @@ const Projects = () => {
           <div className="ongoing-project-content">
             <h3 className="ongoing-project-title">{ongoingProject.title}</h3>
             <p className="ongoing-project-description">{ongoingProject.description}</p>
+            <a 
+              href={ongoingProject.githubLink} 
+              className="project-link"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              View on GitHub →
+            </a>
           </div>
         </div>
 
@@ -135,7 +143,14 @@ const Projects = () => {
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
-                  <a href={project.link} className="project-link">View Details →</a>
+                  <a 
+                    href={project.githubLink} 
+                    className="project-link"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    View on GitHub →
+                  </a>
                 </div>
               </div>
             </div>
