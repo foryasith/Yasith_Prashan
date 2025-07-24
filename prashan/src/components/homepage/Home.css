@@ -513,6 +513,7 @@ html {
   transition: transform 0.3s ease;
 }
 
+
 .bubble:hover {
   transform: scale(1.2);
 }
