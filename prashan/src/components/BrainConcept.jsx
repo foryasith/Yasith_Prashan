@@ -122,8 +122,6 @@ export default function BrainConcept() {
             </button>
           )}
         </div>
-
-        
       </div>
     </section>
   );
