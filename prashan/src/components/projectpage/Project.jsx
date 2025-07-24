@@ -94,15 +94,6 @@ const Projects = () => {
           <div className="ongoing-project-content">
             <h3 className="ongoing-project-title">{ongoingProject.title}</h3>
             <p className="ongoing-project-description">{ongoingProject.description}</p>
-            <div className="ongoing-project-footer">
-              <a href={ongoingProject.link} className="ongoing-project-link">
-                Learn More →
-              </a>
-              <div className="progress-indicator">
-                <div className="progress-bar" style={{ width: `${ongoingProject.progress}%` }}></div>
-                <span>{ongoingProject.progress}% Complete</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -143,7 +134,6 @@ const Projects = () => {
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
-                  <a href={project.link} className="project-link">View Details →</a>
                 </div>
               </div>
             </div>
