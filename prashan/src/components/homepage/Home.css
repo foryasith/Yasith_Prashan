@@ -297,9 +297,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1.8rem;
@@ -325,7 +325,7 @@ html {
 
 .social-links a:hover {
   transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
 }
 
 .social-links a:hover::before {
@@ -410,37 +410,13 @@ html {
   }
   
   .social-links a:hover::after {
-    bottom: -25px;
+    bottom: -5px;
   }
 }
-
 
 /* ===== WHITE BORDER FIX PATCH ===== */
 .sections {
   margin-bottom: -1px; /* Pulls the section up to prevent gap */
   position: relative; /* Contains child elements */
   z-index: 1; /* Ensures proper stacking */
-}
-
-.sections::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, #1a0638, #140326); /* Matches your gradient */
-}
-
-/* Alternative solution if above doesn't work */
-.container {
-  overflow: hidden; /* Contains any margin issues */
-  border-radius: 20px; /* Ensures rounded corners clip content */
-}
-
-/* For mobile devices */
-@media (max-width: 768px) {
-  .sections {
-    margin-bottom: -0.5px;
-  }
 }
