@@ -3,7 +3,6 @@ import './StatsDashboard.css';
 
 const StatsDashboard = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [featuredProjects, setFeaturedProjects] = useState([]);
   const [projectCount, setProjectCount] = useState({
     total: 0,
     software: 0,
@@ -16,57 +15,6 @@ const StatsDashboard = () => {
     const savedCount = localStorage.getItem('projectCount');
     if (savedCount) {
       setProjectCount(JSON.parse(savedCount));
-    }
-
-    // Load starred projects
-    const savedStarred = localStorage.getItem('starredProjects');
-    if (savedStarred) {
-      const starredIds = JSON.parse(savedStarred);
-      const projects = [
-        {
-          id: 1,
-          name: 'E-Commerce Platform',
-          stars: 15,
-          type: 'software',
-          description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB'
-        },
-        {
-          id: 2,
-          name: 'Task Management App',
-          stars: 8,
-          type: 'software',
-          description: 'Productivity application with drag-and-drop functionality'
-        },
-        {
-          id: 3,
-          name: 'Weather Dashboard',
-          stars: 12,
-          type: 'software',
-          description: 'Interactive weather application with 5-day forecast'
-        },
-        {
-          id: 4,
-          name: 'Portfolio Website',
-          stars: 22,
-          type: 'software',
-          description: 'Responsive portfolio with animations and dark/light mode'
-        },
-        {
-          id: 5,
-          name: 'Recipe Finder',
-          stars: 7,
-          type: 'software',
-          description: 'Application that suggests recipes based on ingredients'
-        },
-        {
-          id: 6,
-          name: 'Fitness Tracker',
-          stars: 14,
-          type: 'software',
-          description: 'Mobile-first fitness application for workout tracking'
-        }
-      ];
-      setFeaturedProjects(projects.filter(project => starredIds.includes(project.id)));
     }
   }, []);
 
@@ -95,9 +43,9 @@ const StatsDashboard = () => {
   const statsData = {
     overview: {
       yearsExperience: 2,
-      projectsCompleted: projectCount.total || 19, // Use dynamic count if available
+      projectsCompleted: projectCount.total || 19,
       technologiesUsed: 12,
-      roboticsProjects: projectCount.hardware || 5, // Use dynamic count if available
+      roboticsProjects: projectCount.hardware || 5,
     },
     languages: [
       { name: 'JavaScript', percentage: 40, color: '#f1e05a' },
@@ -222,43 +170,6 @@ const StatsDashboard = () => {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="projects-section">
-        <h2 className="section-title">
-          <svg viewBox="0 0 24 24" width="24" height="24" style={{ marginRight: '10px', verticalAlign: 'middle' }}>
-            <path 
-              fill="#FFD700" 
-              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-            />
-          </svg>
-          Featured Projects
-        </h2>
-        {featuredProjects.length > 0 ? (
-          <div className="projects-grid">
-            {featuredProjects.map((project, index) => (
-              <div key={index} className={`project-card ${project.type}`}>
-                <div className="project-content">
-                  <h3 className="project-name">{project.name}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-meta">
-                    <div className="project-stars">
-                      <span className="star-icon">★</span>
-                      {project.stars}
-                    </div>
-                    <span className="project-type">
-                      {project.type === 'hardware' ? '🤖 Hardware' : '💻 Software'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="no-featured">
-            <p>No projects have been starred yet. Star projects to feature them here.</p>
-          </div>
-        )}
       </section>
     </div>
   );

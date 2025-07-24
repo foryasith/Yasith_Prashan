@@ -480,34 +480,6 @@ html {
   color: #8e44ad;
 }
 
-/* Progress Bar */
-.project-progress-container {
-  margin-top: 20px;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #b8b8b8;
-}
-
-.progress-bar {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #667eea, #8e44ad);
-  position: relative;
-  width: 65%;
-  animation: progressPulse 2s infinite ease-in-out;
-}
 
 @keyframes progressPulse {
   0% { opacity: 0.9; }
@@ -545,59 +517,4 @@ html {
   transform: scale(1.2);
 }
 
-/* Project Link */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 25px;
-  background:  #8e44ad;
-  color: rgb(255, 255, 255);
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-  width: fit-content;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
 
-.project-link:hover {
-  transform: translateY(-3px);
-}
-
-.project-link i {
-  transition: transform 0.5s ease;
-}
-
-.project-link:hover i {
-  transform: translateX(5px);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .current-project-card {
-    flex-direction: column;
-  }
-  
-  .current-project-image {
-    min-height: 200px;
-  }
-  
-  .current-project-content h3 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  
-  .current-project-content p {
-    text-align: center;
-  }
-  
-  .project-features {
-    justify-content: center;
-  }
-  
-  .project-link {
-    margin: 0 auto;
-  }
-}

@@ -67,39 +67,6 @@ const Home = () => {
         {/* Brain Concept Section */}
         <BrainConcept />
 
-        {/* Current Project Section */}
-        <section id="current-project" className="section">
-          <div className="container">
-            <h2>Current Focus</h2>
-            <div className="current-project-card">
-              <div className="current-project-content">
-                <h3>{ongoingProject.title}</h3>
-                <p>{ongoingProject.description}</p>
-                <div className="project-progress">
-                  <span>Progress: {ongoingProject.progress}%</span>
-                  <div className="progress-bar">
-                    <div className="progress-fill" style={{ width: `${ongoingProject.progress}%` }}></div>
-                  </div>
-                </div>
-                <Link 
-                  to={ongoingProject.link} 
-                  className="project-link"
-                  state={{ scrollToOngoing: true }} // Optional: Add state for scrolling
-                >
-                  View Project Details →
-                </Link>
-              </div>
-              <div className="current-project-image">
-                <img 
-                  src={ongoingProject.imageUrl}
-                  alt="Current Projects" 
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Resume Section */}
         <section id="resume" className="section">
           <div className="container">

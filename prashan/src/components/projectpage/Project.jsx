@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../Header';
 import './Project.css';
 
 const Projects = () => {
   const location = useLocation();
-  const [starredProjects, setStarredProjects] = useState(new Set());
 
   useEffect(() => {
-    document.title = "Projects - Yasith Prashan";
+    document.title = "Projects";
     
-    // Scroll to ongoing project if coming from home page link
     if (location.hash === '#ongoing-project') {
       const element = document.getElementById('ongoing-project');
       if (element) {
@@ -20,25 +18,6 @@ const Projects = () => {
       }
     }
   }, [location]);
-
-  // Load starred projects from localStorage
-  useEffect(() => {
-    const savedStarred = localStorage.getItem('starredProjects');
-    if (savedStarred) {
-      setStarredProjects(new Set(JSON.parse(savedStarred)));
-    }
-  }, []);
-
-  const toggleStar = (projectId) => {
-    const newStarred = new Set(starredProjects);
-    if (newStarred.has(projectId)) {
-      newStarred.delete(projectId);
-    } else {
-      newStarred.add(projectId);
-    }
-    setStarredProjects(newStarred);
-    localStorage.setItem('starredProjects', JSON.stringify(Array.from(newStarred)));
-  };
 
   const ongoingProject = {
     id: 0,
@@ -62,7 +41,46 @@ const Projects = () => {
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       type: "software"
     },
-    // ... other finished projects remain the same ...
+    {
+      id: 2,
+      title: "Task Management App",
+      description: "A productivity application for organizing tasks with drag-and-drop functionality and team collaboration features.",
+      imageUrl: "https://via.placeholder.com/400x250/2a0947/ffffff?text=Task+App",
+      link: "#",
+      status: "finished",
+      tech: ["React", "Firebase", "Material UI", "Redux"],
+      type: "software"
+    },
+    {
+      id: 3,
+      title: "Health Fitness Tracker",
+      description: "Mobile application that tracks workouts, nutrition, and health metrics with data visualization.",
+      imageUrl: "https://via.placeholder.com/400x250/3b0b5a/ffffff?text=Fitness+Tracker",
+      link: "#",
+      status: "finished",
+      tech: ["React Native", "GraphQL", "Node.js", "MongoDB"],
+      type: "software"
+    },
+    {
+      id: 4,
+      title: "Smart Home Dashboard",
+      description: "IoT control panel for managing smart home devices with real-time monitoring and automation.",
+      imageUrl: "https://via.placeholder.com/400x250/4c0c6d/ffffff?text=Smart+Home",
+      link: "#",
+      status: "finished",
+      tech: ["React", "Python", "Raspberry Pi", "MQTT"],
+      type: "hardware"
+    },
+    {
+      id: 5,
+      title: "AI Image Recognition",
+      description: "Machine learning model that classifies images with a custom-trained convolutional neural network.",
+      imageUrl: "https://via.placeholder.com/400x250/5d0d80/ffffff?text=AI+Image",
+      link: "#",
+      status: "finished",
+      tech: ["Python", "TensorFlow", "OpenCV", "Flask"],
+      type: "software"
+    }
   ];
 
   useEffect(() => {
@@ -80,7 +98,6 @@ const Projects = () => {
       <div className="projects-container">
         <h1 className="projects-title">My Projects</h1>
         
-        {/* Ongoing Project Card with ID for deep linking */}
         <div className="ongoing-project-card" id="ongoing-project">
           <div className="ongoing-project-badge">Ongoing Project</div>
           <div className="ongoing-project-image-container">
@@ -97,26 +114,10 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Finished Projects Section */}
         <h2 className="finished-projects-title">Finished Projects</h2>
         <div className="projects-grid">
           {finishedProjects.map((project) => (
-            <div key={project.id} className={`project-card ${starredProjects.has(project.id) ? 'starred' : ''}`}>
-              <div className="star-button-container">
-                <button 
-                  className={`star-button ${starredProjects.has(project.id) ? 'starred' : ''}`}
-                  onClick={() => toggleStar(project.id)}
-                  aria-label={starredProjects.has(project.id) ? 'Unstar project' : 'Star project'}
-                >
-                  <svg viewBox="0 0 24 24" width="20" height="20">
-                    <path 
-                      fill="currentColor" 
-                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                    />
-                  </svg>
-                </button>
-              </div>
-              
+            <div key={project.id} className="project-card">
               <div className="project-content-wrapper">
                 <div className="project-image-container">
                   <img 
@@ -134,6 +135,7 @@ const Projects = () => {
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
+                  <a href={project.link} className="project-link">View Details →</a>
                 </div>
               </div>
             </div>
