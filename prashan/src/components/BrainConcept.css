@@ -71,6 +71,7 @@
   opacity: 0; /* Hidden by default */
   animation: fadeIn 2s forwards; /* Fade-in animation */
   animation-delay: 0.15s; /* Delay after brain movement */
+  text-decoration: none 
 }
 
 /* Left button positioning */
@@ -84,7 +85,7 @@
   height: 50px; /* Fixed height for consistency */
 }
 .left-button:hover {
-  transform: scale(1.25);
+  transform: scale(10.25);
   box-shadow: -40px 10px 150px rgba(255, 255, 255, 0.2);
   transition: transform 0.5s ease;
 }

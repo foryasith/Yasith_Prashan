@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './BrainConcept.css';
 
 export default function BrainConcept() {
@@ -107,9 +108,14 @@ export default function BrainConcept() {
         <div className="left-brain" style={leftBrainStyle}>
           <img src="/images/left-brain.png" alt="Creative brain" />
           {showButtons && (
-            <button className="brain-button left-button">
+            <a 
+              href="https://instagram.com/yasith_prashan" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="brain-button left-button"
+            >
               Creative Side
-            </button>
+            </a>
           )}
         </div>
 
@@ -117,9 +123,12 @@ export default function BrainConcept() {
         <div className="right-brain" style={rightBrainStyle}>
           <img src="/images/right-brain.png" alt="Logical brain" />
           {showButtons && (
-            <button className="brain-button right-button">
+            <Link 
+              to="/projects" 
+              className="brain-button right-button"
+            >
               Logical Side
-            </button>
+            </Link>
           )}
         </div>
       </div>

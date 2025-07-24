@@ -16,14 +16,6 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const ongoingProject = {
-    title: "My Current Focus Project",
-    description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
-    imageUrl: "./assets/shot.jpg",
-    link: "/projects#ongoing-project", // Updated to link to specific section
-    progress: 65
-  };
-
   return (
     <div className="Home">
       <Header scrolled={scrolled} />
@@ -78,16 +70,16 @@ const Home = () => {
         <section id="social" className="sections">
           <div className="container">
             <div className="social-links">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/foryasith" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/yasith-prashan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
+              <a href="https://instagram.com/yasith_prashan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i className="fab fa-instagram"></i>
               </a>
-              <a href="mailto:your.email@example.com" aria-label="Email">
+              <a href="mailto:yasithprashan@gamil.com" aria-label="Email">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>

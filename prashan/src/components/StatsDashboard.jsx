@@ -48,10 +48,10 @@ const StatsDashboard = () => {
       roboticsProjects: projectCount.hardware || 5,
     },
     languages: [
-      { name: 'JavaScript', percentage: 40, color: '#f1e05a' },
+      { name: 'JavaScript', percentage: 40, color: '#f1ba5aff' },
       { name: 'Python', percentage: 15, color: '#3572A5' },
-      { name: 'c', percentage: 30, color: '#3178c6' },
-      { name: 'Arduino', percentage: 15, color: '#00979D' },
+      { name: 'c', percentage: 30, color: '#6d1b53ff' },
+      { name: 'Arduino(C++)', percentage: 15, color: '#00979D' },
     ],
     skills: {
       software: ['React', 'TensorFlow', 'OpenCV', 'Node.js'],

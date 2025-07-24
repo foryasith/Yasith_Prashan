@@ -23,7 +23,7 @@ const Projects = () => {
     id: 0,
     title: "My Current Focus Project",
     description: "This is my main ongoing project where I'm currently focusing my efforts. It showcases my latest work and the technologies I'm mastering right now.",
-    imageUrl: "./assets/shot.jpg",
+    imageUrl: "src/assets/ongoing.jpg",
     githubLink: "https://github.com/yourusername/current-project",
     status: "ongoing",
     type: "software",
