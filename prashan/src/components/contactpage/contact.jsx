@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com'; // <-- Add this line
 import Header from '../Header';
 import './Contact.css';
 
 const Contact = () => {
-  // Set page title
   useEffect(() => {
     document.title = "Contact";
   }, []);
@@ -28,22 +28,25 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
+    const serviceID = 'service_ytow5f9';     // e.g. service_abcd123
+    const templateID = 'template_vpqt57g';   // e.g. template_xyz456
+    const publicKey = 'BioBWeovFIaImzvHp';     // e.g. dXxWb0aBcDeFG1234
+
     try {
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await emailjs.send(serviceID, templateID, {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      }, publicKey);
+
       setSubmissionStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Email send error:', error);
       setSubmissionStatus('error');
-      console.error('Submission error:', error);
     } finally {
       setIsSubmitting(false);
-      // Reset status after 5 seconds
       setTimeout(() => setSubmissionStatus(null), 5000);
     }
   };
@@ -56,7 +59,7 @@ const Contact = () => {
         <p className="contact-subtitle">
           Have questions or want to discuss a project? Feel free to reach out!
         </p>
-        
+
         <div className="contact-content">
           <form onSubmit={handleSubmit} className="contact-form">
             <div className="form-group">
@@ -71,7 +74,7 @@ const Contact = () => {
                 placeholder="Enter your name"
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -84,7 +87,7 @@ const Contact = () => {
                 placeholder="your.email@example.com"
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="message">Your Message</label>
               <textarea
@@ -97,22 +100,22 @@ const Contact = () => {
                 placeholder="What would you like to discuss?"
               ></textarea>
             </div>
-            
-            <button 
-              type="submit" 
+
+            <button
+              type="submit"
               className="submit-btn"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
-            
+
             {submissionStatus === 'success' && (
               <div className="success-message">
                 <i className="fas fa-check-circle"></i>
                 Thank you! Your message has been sent successfully.
               </div>
             )}
-            
+
             {submissionStatus === 'error' && (
               <div className="error-message">
                 <i className="fas fa-exclamation-circle"></i>
@@ -120,7 +123,7 @@ const Contact = () => {
               </div>
             )}
           </form>
-          
+
           <div className="contact-info">
             <h2>Contact Information</h2>
             <div className="info-item">
@@ -144,16 +147,16 @@ const Contact = () => {
                 <span>Colombo, Sri Lanka</span>
               </div>
             </div>
-            
+
             <div className="social-links">
-              <a href="https://linkedin.com/in/yasithprashan" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/yasith-prashan" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/yasithprashan" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/foryasith" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="https://twitter.com/yasithprashan" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-twitter"></i>
+              <a href="mailto:yasithprashan@gmail.com" aria-label="Email">
+                <i className="fas fa-envelope"></i>
               </a>
             </div>
           </div>
