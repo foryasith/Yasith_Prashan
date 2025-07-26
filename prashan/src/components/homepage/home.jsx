@@ -25,7 +25,7 @@ const Home = () => {
         <section id="home" className="hero-section">
           <div className="hero-content">
             <div className="hero-text">
-              <h1>Yasith Prashan</h1>
+              <h1>Prashan Karunarathna</h1>
               <p>Computer Science Undergraduate</p>
               <h2>Bridging software and hardware through innovative solutions</h2>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Ensure you have the appropriate CSS for styling
+import './Header.css';
 
 const Header = ({ scrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,16 +17,33 @@ const Header = ({ scrolled }) => {
     }
   };
 
+  const handleHomeClick = () => {
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <>
       <header className={`invisible-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="name-logo">
-          <h1>Prashan</h1>
+          <Link 
+            to="/" 
+            onClick={handleHomeClick}
+            className="home-link"
+            style={{ textDecoration: 'none' }}
+          >
+            <h1>Prashan</h1>
+          </Link>
         </div>
         <button 
           className="menu-button" 
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
           <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
             <span></span>
@@ -36,7 +53,7 @@ const Header = ({ scrolled }) => {
         </button>
       </header>
 
-      <nav className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
+      <nav className={`side-menu ${isMenuOpen ? 'open' : ''}`} aria-hidden={!isMenuOpen}>
         <ul>
           <li>
             <Link 
@@ -89,6 +106,9 @@ const Header = ({ scrolled }) => {
       <div 
         className={`overlay ${isMenuOpen ? 'active' : ''}`}
         onClick={toggleMenu}
+        role="button"
+        tabIndex={0}
+        aria-label="Close menu"
       />
     </>
   );
