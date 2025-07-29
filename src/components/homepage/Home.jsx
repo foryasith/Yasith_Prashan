@@ -31,7 +31,7 @@ const Home = () => {
             </div>
             <div className="profile-photo">
               <img
-                src="src/assets/profile.png"
+                src="/profile.png"
                 alt="Profile"
                 loading="lazy"
               />
