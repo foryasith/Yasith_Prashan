@@ -1,0 +1,202 @@
+/* ===== VARIABLES & BASE STYLES ===== */
+:root {
+  --primary: #667eea;
+  --secondary: #8e44ad;
+  --dark-bg: #050e37;
+  --glass-white: rgba(255, 255, 255, 0.1);
+  --text-light: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== ANIMATED GRADIENT BACKGROUND ===== */
+.contact-page {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, var(--dark-bg), #140326, #1a0638);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding-top: 80px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+.contact-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+.contact-container p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #a7a7a7;
+  text-align: center;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to right, #5a67d8, #7d3c98);
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #fff, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.info-item i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: var(--primary);
+}
+
+.info-item span {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.info-item .fa-phone-alt {
+  rotate: 90deg;
+}
+
+.success-message {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(212, 237, 218, 0.2);
+  color: #d4edda;
+  border-radius: 8px;
+  border: 1px solid rgba(195, 230, 203, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+  
+  .contact-container h1 {
+    font-size: 2.2rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-container p {
+    font-size: 1rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 1.4rem;
+  }
+  
+  .info-item span {
+    font-size: 1rem;
+  }
+}

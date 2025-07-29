@@ -1,0 +1,191 @@
+/* Main section container - takes full viewport height */
+.brain-concept-section {
+  min-height: 400vh; /* Allows for scroll animation space */
+  position: relative;
+  margin: 100px 0;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 5s ease;
+  pointer-events: none; /* Prevents interaction when hidden */
+}
+
+/* Visible state - triggered by scroll */
+.brain-concept-section.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container for all brain elements */
+.brain-container {
+  position: sticky; /* Makes it stick during scroll */
+  top: 20vh; /* How far from top of viewport to stick */
+  height: 110vh; /* Viewport height for animation space */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main brain styles */
+.main-brain {
+  position: absolute;
+  z-index: 2; /* Above background elements */
+  transition: all 3s ease;
+  transform: translate(-50%, -50%); /* Centers using left/top positioning */
+}
+
+.main-brain img {
+
+  width: 100%;
+  margin-top: 10%;
+  max-width: 330px; /* Control main brain size */
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
+}
+
+/* Side brain containers */
+.left-brain, .right-brain {
+  position: absolute;
+  width: 30%; /* Relative to container */
+  max-width: 200px; /* Maximum size */
+   /* 2000ms delay before animation starts */
+  transition: all 1.23s ease;  /* timming *//* timming *//* timming */ /* timming */ /* timming */ /* timming */
+  top: 50%; /* Center vertically */
+  z-index: 3; /* Above main brain */
+  transform-origin: center; /* Rotation center point */
+  z-index: 1;
+
+}
+
+/* Side brain images */
+.left-brain img, .right-brain img {
+  width: 100%;
+  filter: drop-shadow(0 0 15px rgba(0,0,0,0.3));
+}
+
+/* Brain buttons */
+.brain-button {
+  position: absolute;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 2s ease;
+  white-space: nowrap;
+  opacity: 0; /* Hidden by default */
+  animation: fadeIn 2s forwards; /* Fade-in animation */
+  animation-delay: 0.35s; /* Delay after brain movement */
+  text-decoration: none 
+}
+
+/* Left button positioning */
+.left-button {
+  left: -180px; /* Position right of left brain */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #365a65;
+  color: white;
+  width: 150px; /* Fixed width for consistency */
+  height: 50px; /* Fixed height for consistency */
+}
+.left-button:hover {
+  transform: scale(10.25);
+  box-shadow: -5px 5px 50px rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease;
+}
+
+/* Right button positioning */
+.right-button {
+  right: -180px; /* Position left of right brain */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #FB755D;
+  color: white;
+  width: 150px;
+  height: 50px;
+}
+.right-button:hover {
+  transform: scale(1.25);
+  box-shadow: -5px 5px 50px rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease;
+}
+
+/* Post-animation content */
+.post-animation-content {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s forwards;
+  animation-delay: 0s;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .brain-container {
+    top: 20vh;
+    height: 60vh;
+  }
+  
+  .main-brain img {
+    max-width: 250px;
+  }
+  
+  .left-brain, .right-brain {
+    width: 25%;
+    max-width: 150px;
+  }
+  
+  .brain-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  
+  .left-button {
+    right: -100px;
+  }
+  
+  .right-button {
+    left: -100px;
+  }
+}
+
+.background-brain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-brain-image {
+  margin-top: -270px;
+  z-index: 1;
+  width: 48%;
+  height: 73%;
+  object-fit: contain;
+  opacity: 0.1; /* Adjust opacity as needed */
+  filter: blur(1px); /* Optional blur effect */
+}
+
+/* Visibility transition */
+.brain-concept-section.visible .background-brain-image,
+.brain-concept-section.visible .base-brain {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
